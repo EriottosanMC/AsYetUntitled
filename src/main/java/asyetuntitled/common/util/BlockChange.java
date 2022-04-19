@@ -130,6 +130,5 @@ public class BlockChange {
 				AsYetUntitled.logMessage("Set " + block.getRegistryName().getPath() + " to allow spawn");
 			}
 		}
-		
 	}
 }

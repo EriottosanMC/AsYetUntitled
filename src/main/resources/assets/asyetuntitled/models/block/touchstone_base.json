@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "asyetuntitled:block/touchstone",
-    "top": "asyetuntitled:block/touchstone",
-    "side": "asyetuntitled:block/touchstone_side"
-  }
-}

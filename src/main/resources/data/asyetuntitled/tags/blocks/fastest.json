@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-  "minecraft:stone",
-  "minecraft:granite"
-  ],
-  "//README1": "Add blocks into values array by modid:block.",
-  "//README2": "The blocks included already are for example and are already handled by default."
-}

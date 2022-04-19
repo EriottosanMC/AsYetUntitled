@@ -41,7 +41,7 @@ public class PlayerDarkness
 		
 		if(this.darknessTicks == 100)
 		{
-			player.sendMessage(new TranslatableComponent("charlie.scare.message"), Util.NIL_UUID);
+			player.sendMessage(new TranslatableComponent("asyetuntitled.charlie.scare.message"), Util.NIL_UUID);
 		}
 		
 		alreadyDark = true;
@@ -52,7 +52,7 @@ public class PlayerDarkness
 		if(this.darknessTicks != 0)
 		{
 			this.darknessTicks = 0;
-			player.sendMessage(new TranslatableComponent("charlie.gone.message"), Util.NIL_UUID);
+			player.sendMessage(new TranslatableComponent("asyetuntitled.charlie.gone.message"), Util.NIL_UUID);
 			alreadyDark = false;
 		}
 	}

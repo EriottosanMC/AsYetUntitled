@@ -1,8 +1,14 @@
 {
-	"asyetuntitled.item.blank_slot":"Blank Slot",
-	"item.asyetuntitled.backpack_nether": "Nether Backpack",
 	"death.attack.asyetuntitled.charlie": "%1$s was killed by something in the darkness...",
+	
 	"asyetuntitled.subtitle.charlie_mood": "Charlie approaching",
 	"asyetuntitled.subtitle.charlie_scare": "Charlie nearing",
-	"asyetuntitled.subtitle.charlie_attack": "Charlie attacking"
+	"asyetuntitled.subtitle.charlie_attack": "Charlie attacking",
+	"asyetuntitled.subtitle.ominous_whisper": "Ominous whispering",
+
+	"commands.asyetuntitled.sanity.set": "Set sanity to %1$s (forced update = %2$s)",
+	"commands.asyetuntitled.sanity.change": "Changed sanity by %1$s (forced update = %2$s)",
+	
+	"asyetuntitled.charlie.scare.message": "I don't think I'm alone out here...",
+	"asyetuntitled.charlie.gone.message": "I can see the light!"
 }
