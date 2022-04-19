@@ -1,10 +1,5 @@
 package asyetuntitled;
 
-import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -20,14 +15,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import asyetuntitled.client.screen.LivingChestScreen;
 import asyetuntitled.client.util.ClientReflectionHelper;
-import asyetuntitled.client.util.ClientResourceLocations;
 import asyetuntitled.client.util.SoundsRegistry;
-import asyetuntitled.common.block.BlocksRegistry;
 import asyetuntitled.common.entity.EntityRegistry;
-import asyetuntitled.common.item.ItemsRegistry;
-import asyetuntitled.common.menu.MenusRegistry;
 import asyetuntitled.common.messages.MessagesRegistry;
 import asyetuntitled.common.particle.ParticlesRegistry;
 import asyetuntitled.common.util.BlockChange;
@@ -63,10 +53,7 @@ public class AsYetUntitled
         MinecraftForge.EVENT_BUS.register(this);
         
         // Registers the mod content to the respective deferred registries
-        BlocksRegistry.registerBlocks(modBus);
-        ItemsRegistry.registerItems(modBus);
         EntityRegistry.registerEntities(modBus);
-        MenusRegistry.register(modBus);
         SoundsRegistry.register(modBus);
         ParticlesRegistry.register(modBus);
     }
@@ -87,20 +74,6 @@ public class AsYetUntitled
     {
     	event.enqueueWork(() -> {
         	ClientReflectionHelper.init();
-        	
-        	ItemBlockRenderTypes.setRenderLayer(BlocksRegistry.GRASSUSEFUL.get(), RenderType.cutoutMipped());
-        	ItemBlockRenderTypes.setRenderLayer(BlocksRegistry.TALLGRASSUSEFUL.get(), RenderType.cutoutMipped());
-        	MenuScreens.register(MenusRegistry.LIVING_CHEST_CONTAINER.get(), LivingChestScreen::new);           // Attach our container to the screen
-// 	            ItemBlockRenderTypes.setRenderLayer(Registration.POWERGEN.get(), RenderType.translucent()); // Set the render type for our power generator to translucent
- 		   ItemProperties.register(ItemsRegistry.DUMMY_RUNE.get(), ClientResourceLocations.ALPHABET, (stack, level, living, id) -> {
- 			   CompoundTag tag = stack.getOrCreateTag();
- 			   float f = 0.0F;
- 			   if(tag.contains("Alphabet"))
- 			   {
- 				   f = tag.getFloat("Alphabet");
- 			   }
- 			   return f;
- 		   });
  	   });
      }
 

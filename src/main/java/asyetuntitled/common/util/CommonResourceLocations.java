@@ -6,7 +6,6 @@ import net.minecraft.resources.ResourceLocation;
 public class CommonResourceLocations {
 
 	//Capabilities
-	public static ResourceLocation LEVEL_CHEST_CAPABILITY = new ResourceLocation(AsYetUntitled.MODID, "levelchests");
 	public static ResourceLocation DARKNESS_CAPABILITY = new ResourceLocation(AsYetUntitled.MODID, "playerdarkness");
 	public static ResourceLocation SANITY_CAPABILITY = new ResourceLocation(AsYetUntitled.MODID, "playersanity");
 	

@@ -1,40 +1,29 @@
 package asyetuntitled.client.event;
 
-import java.util.List;
-
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.BufferUploader;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.math.Vector3f;
 
 import asyetuntitled.AsYetUntitled;
-import asyetuntitled.client.test.ClientSanityData;
+import asyetuntitled.client.sanity.ClientSanityData;
 import asyetuntitled.client.util.ClientReflectionHelper;
 import asyetuntitled.client.util.RendererChanger;
-import asyetuntitled.common.item.ItemBackpack;
 import asyetuntitled.client.util.ClientResourceLocations;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.inventory.InventoryScreen;
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.client.event.RenderLivingEvent;
-import net.minecraftforge.client.event.ScreenEvent.DrawScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -88,17 +77,7 @@ public class ClientRenderEventsHandler {
 			renderSanity(event.getWindow());
 		}
 	}
-	
-	private static void fillRect(BufferBuilder p_115153_, int p_115154_, int p_115155_, int p_115156_, int p_115157_, int p_115158_, int p_115159_, int p_115160_, int p_115161_) {
-		RenderSystem.setShader(GameRenderer::getPositionColorShader);
-		p_115153_.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
-		p_115153_.vertex((double)(p_115154_ + 0), (double)(p_115155_ + 0), 0.0D).color(p_115158_, p_115159_, p_115160_, p_115161_).endVertex();
-		p_115153_.vertex((double)(p_115154_ + 0), (double)(p_115155_ + p_115157_), 0.0D).color(p_115158_, p_115159_, p_115160_, p_115161_).endVertex();
-		p_115153_.vertex((double)(p_115154_ + p_115156_), (double)(p_115155_ + p_115157_), 0.0D).color(p_115158_, p_115159_, p_115160_, p_115161_).endVertex();
-		p_115153_.vertex((double)(p_115154_ + p_115156_), (double)(p_115155_ + 0), 0.0D).color(p_115158_, p_115159_, p_115160_, p_115161_).endVertex();
-		p_115153_.end();
-		BufferUploader.end(p_115153_);
-   }
+
 	//Renders the sanity aspects
 	private static void renderSanity(Window window)
 	{
@@ -241,57 +220,4 @@ public class ClientRenderEventsHandler {
 			RenderSystem.enableDepthTest();
 		}	
 	}	
-	
-	
-	@SubscribeEvent
-	public static void renderOverlay(RenderGameOverlayEvent event) 
-	{
-		
-	}
-	
-	@SubscribeEvent
-	public static void renderScreen(DrawScreenEvent.Post event)
-	{
-		if(event.getScreen() instanceof InventoryScreen screen)
-		{
-			Minecraft mc = Minecraft.getInstance();
-			Player player = mc.player;
-			ItemStack chest = player.getItemBySlot(EquipmentSlot.CHEST);
-			if(chest.getItem() instanceof ItemBackpack backpack)
-			{
-				List<ItemStack> parts = backpack.getParts(chest);
-				for(ItemStack part : parts)
-				{
-					if(part.isBarVisible())
-					{
-						RenderSystem.disableDepthTest();
-						RenderSystem.disableTexture();
-						RenderSystem.disableBlend();
-						Tesselator tesselator = Tesselator.getInstance();
-						BufferBuilder bufferbuilder = tesselator.getBuilder();
-						int i = part.getBarWidth();
-						int j = part.getBarColor();
-						int x = screen.getGuiLeft() + 10;
-						int y = screen.getGuiTop() + 40;
-						fillRect(bufferbuilder, x, y, 13, 2, 0, 0, 0, 255);
-						fillRect(bufferbuilder, x, y, i, 1, j >> 16 & 255, j >> 8 & 255, j & 255, 255);
-						RenderSystem.enableBlend();
-						RenderSystem.enableTexture();
-						RenderSystem.enableDepthTest();
-					}
-				}
-			}
-		}
-	}
-	
-	@SubscribeEvent
-	public static void renderEntity(RenderLivingEvent.Post<LivingEntity, EntityModel<LivingEntity>> event)
-	{
-	}
-	
-	@SubscribeEvent
-	public static void renderEntity(RenderLivingEvent.Pre<LivingEntity, EntityModel<LivingEntity>> event)
-	{
-	}
-	
 }

@@ -129,13 +129,6 @@ public class BlockChange {
 				properties.isValidSpawn(allowSpawn);
 				AsYetUntitled.logMessage("Set " + block.getRegistryName().getPath() + " to allow spawn");
 			}
-			
-			if(block.defaultDestroyTime() < 0.15F)
-			{
-				properties.strength(0.15F, 0.0F);
-				block.getStateDefinition().getPossibleStates().forEach(state -> CommonReflectionHelper.setBlockStateDestroySpeed(state, 0.15F));
-				AsYetUntitled.logMessage("Stopped " + block.getRegistryName().getPath() + " from instabreaking");
-			}
 		}
 		
 	}

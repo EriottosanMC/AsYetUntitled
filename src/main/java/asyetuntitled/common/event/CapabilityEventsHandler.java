@@ -5,15 +5,13 @@ import java.util.List;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.datafixers.util.Pair;
 import asyetuntitled.AsYetUntitled;
-import asyetuntitled.client.test.ClientSanityData;
+import asyetuntitled.client.sanity.ClientSanityData;
 import asyetuntitled.common.command.SanityCommands;
 import asyetuntitled.common.entity.ShadowCreature;
-import asyetuntitled.common.entity.livingchest.LivingChest;
 import asyetuntitled.common.messages.MessagesRegistry;
 import asyetuntitled.common.messages.ServerboundPacketSkyFlash;
 import asyetuntitled.common.util.CommonResourceLocations;
 import asyetuntitled.common.util.DarknessHelper;
-import asyetuntitled.common.util.capability.LevelChestProvider;
 import asyetuntitled.common.util.capability.PlayerDarknessProvider;
 import asyetuntitled.common.util.capability.PlayerSanityProvider;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -22,7 +20,6 @@ import net.minecraft.world.Container;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.monster.Monster;
@@ -37,16 +34,13 @@ import net.minecraft.world.level.block.CakeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.event.entity.EntityLeaveWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.ItemCraftedEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent.ItemPickupEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.PlayerChangeGameModeEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
@@ -201,41 +195,6 @@ public class CapabilityEventsHandler {
 				sanity.setSanity(player, sanity.getSanityRaw(), true);
 			});
 		}
-		else if(event.getEntity() instanceof LivingChest chest && !event.getWorld().isClientSide)
-		{
-			event.getWorld().getCapability(LevelChestProvider.LEVEL_CHESTS).ifPresent(levelChests -> {
-				levelChests.addChest(chest);
-			});
-		}
-		else if(event.getEntity() instanceof LightningBolt bolt)
-		{
-		}
-		
-	}
-	
-	
-	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
-	public static void onEvent(EntityLeaveWorldEvent event)
-	{
-		if(event.getEntity() instanceof LivingChest chest && !event.getWorld().isClientSide && !chest.isAlive())
-		{
-			event.getWorld().getCapability(LevelChestProvider.LEVEL_CHESTS).ifPresent(levelChests -> {
-				levelChests.removeChest(chest);
-			});
-		}
-	}
-	
-	@SubscribeEvent
-	public static void attachCapabilitiesLevel(AttachCapabilitiesEvent<Level> event)
-	{
-		Level level = event.getObject();
-		if(!level.isClientSide)
-		{
-			if(!event.getObject().getCapability(LevelChestProvider.LEVEL_CHESTS).isPresent())
-			{
-				event.addCapability(CommonResourceLocations.LEVEL_CHEST_CAPABILITY, new LevelChestProvider());
-			}
-		}
 	}
 	
 	@SubscribeEvent
@@ -348,15 +307,5 @@ public class CapabilityEventsHandler {
 				
 			}
 		}
-	}
-	
-	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
-	public static void onEvent(ItemPickupEvent event)
-	{
-	}	
-	
-	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
-	public static void onEvent(EntityAttributeCreationEvent event)
-	{
 	}
 }

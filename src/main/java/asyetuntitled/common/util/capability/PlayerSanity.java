@@ -1,7 +1,7 @@
 package asyetuntitled.common.util.capability;
 
 import asyetuntitled.AsYetUntitled;
-import asyetuntitled.client.test.ClientSanityData;
+import asyetuntitled.client.sanity.ClientSanityData;
 import asyetuntitled.common.messages.MessagesRegistry;
 import asyetuntitled.common.messages.ClientboundPacketSyncPlayerDarkness;
 import net.minecraft.nbt.CompoundTag;

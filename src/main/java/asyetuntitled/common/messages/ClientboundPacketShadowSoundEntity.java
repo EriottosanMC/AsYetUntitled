@@ -4,7 +4,7 @@ import java.util.function.Supplier;
 
 import org.apache.commons.lang3.Validate;
 
-import asyetuntitled.client.test.ClientSanityData;
+import asyetuntitled.client.sanity.ClientSanityData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;

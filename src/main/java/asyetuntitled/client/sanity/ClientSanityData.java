@@ -1,9 +1,10 @@
-package asyetuntitled.client.test;
+package asyetuntitled.client.sanity;
 
 import java.util.List;
 import java.util.Random;
 
 import asyetuntitled.AsYetUntitled;
+import asyetuntitled.client.sound.FollowingSoundInstance;
 import asyetuntitled.client.util.ClientReflectionHelper;
 import asyetuntitled.client.util.ClientResourceLocations;
 import asyetuntitled.client.util.SoundsRegistry;

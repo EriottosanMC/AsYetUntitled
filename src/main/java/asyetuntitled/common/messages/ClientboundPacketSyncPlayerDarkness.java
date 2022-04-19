@@ -2,7 +2,7 @@ package asyetuntitled.common.messages;
 
 import java.util.function.Supplier;
 
-import asyetuntitled.client.test.ClientSanityData;
+import asyetuntitled.client.sanity.ClientSanityData;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 

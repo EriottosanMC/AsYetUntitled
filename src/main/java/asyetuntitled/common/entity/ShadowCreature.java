@@ -1,6 +1,6 @@
 package asyetuntitled.common.entity;
 
-import asyetuntitled.client.test.ClientSanityData;
+import asyetuntitled.client.sanity.ClientSanityData;
 import asyetuntitled.common.util.capability.PlayerSanity;
 import asyetuntitled.common.util.capability.PlayerSanityProvider;
 import net.minecraft.world.entity.player.Player;
