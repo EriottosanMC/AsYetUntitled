@@ -1,0 +1,125 @@
+{
+  "loader": "asyetuntitled:backpack_loader",
+     "textures": 
+	 {	 "backpack": "asyetuntitled:item/backpack/top",
+        "button": "asyetuntitled:item/backpack/button"
+    },
+	"main":
+	{   
+		 "parent": "block/block",
+		"ambientocclusion": false,
+		"textures": {
+			"backpack": "asyetuntitled:item/backpack/main",
+			"button": "asyetuntitled:item/backpack/button"
+		},
+		"elements": [
+			{  	
+				"from": [2, 0, 8],
+				"to": [14, 11, 14],
+				"faces": {
+					"north": {"uv": [0, 0, 12, 11], "texture": "#backpack"},
+					"east": {"uv": [0, 0, 6, 11], "texture": "#backpack"},
+					"south": {"uv": [0, 0, 12, 11], "texture": "#backpack"},
+					"west": {"uv": [0, 0, 6, 11], "texture": "#backpack"},
+					"up": {"uv": [0, 0, 12, 6], "texture": "#backpack"},
+					"down": {"uv": [0, 0, 12, 6], "texture": "#backpack"}
+				}
+			},
+		   {
+				"from": [11, 8, 7],
+				"to": [12, 10, 8],
+				"faces": {
+					"north": {"uv": [0, 0, 1, 2], "texture": "#button"},
+					"east": {"uv": [6, 7, 7, 9], "texture": "#button"},
+					"west": {"uv": [3, 2, 4, 4], "texture": "#button"},
+					"up": {"uv": [0, 0, 1, 1], "texture": "#button"},
+					"down": {"uv": [3, 6, 4, 7], "texture": "#button"}
+				}
+			},
+			{
+				"from": [4, 8, 7],
+				"to": [5, 10, 8],
+				"faces": {
+					"north": {"uv": [6, 2, 7, 4], "texture": "#button"},
+					"east": {"uv": [0, 0, 1, 2], "texture": "#button"},
+					"west": {"uv": [6, 4, 7, 6], "texture": "#button"},
+					"up": {"uv": [0, 0, 1, 1], "texture": "#button"},
+					"down": {"uv": [6, 4, 7, 5], "texture": "#button"}
+				}
+			}
+		]
+	},
+
+	"front":
+	{   
+		"parent": "block/block",
+		"ambientocclusion": false,
+		"textures": {
+			"backpack": "asyetuntitled:item/backpack/front",
+			"button": "asyetuntitled:item/backpack/button"
+		},
+		"elements": [
+			{  	
+				"from": [3, 1, 5],
+				"to": [13, 7, 8],
+				"faces": {
+					"north": {"uv": [0, 0, 10, 6], "texture": "#backpack"},
+					"east": {"uv": [0, 0, 3, 6], "texture": "#backpack"},
+					"west": {"uv": [0, 0, 3, 6], "texture": "#backpack"},
+					"up": {"uv": [0, 0, 10, 3], "texture": "#backpack"},
+					"down": {"uv": [0, 0, 10, 3], "texture": "#backpack"}
+				}
+			},
+		   {
+				"from": [7, 4, 4],
+				"to": [9, 6, 5],
+				"faces": {
+					"north": {"uv": [5, 6, 7, 8], "texture": "#button"},
+					"east": {"uv": [1, 4, 2, 6], "texture": "#button"},
+					"west": {"uv": [9, 1, 10, 3], "texture": "#button"},
+					"up": {"uv": [3, 3, 5, 4], "texture": "#button"},
+					"down": {"uv": [7, 4, 9, 5], "texture": "#button"}
+				}
+		   }
+		]
+	},
+	
+	"top":
+	{   
+		"parent": "block/block",
+		"ambientocclusion": false,
+		"textures": {
+			"backpack": "asyetuntitled:item/backpack/top",
+			"button": "asyetuntitled:item/backpack/button"
+		},
+		"elements": [
+			{  	
+				"from": [3, 11, 9],
+				"to": [13, 14, 14],
+				"faces": {
+					"north": {"uv": [0, 0, 10, 3], "texture": "#backpack"},
+					"east": {"uv": [0, 0, 5, 3], "texture": "#backpack"},
+					"south": {"uv": [0, 0, 10, 3], "texture": "#backpack"},
+					"west": {"uv": [0, 0, 5, 3], "texture": "#backpack"},
+					"up": {"uv": [0, 0, 10, 5], "texture": "#backpack"}
+				}
+			},
+		   {
+				"name": "buttontop",
+				"from": [7, 12, 8],
+				"to": [9, 13, 9],
+				"faces": {
+					"north": {"uv": [0, 0, 2, 1], "texture": "#button"},
+					"east": {"uv": [0, 0, 1, 1], "texture": "#button"},
+					"south": {"uv": [0, 0, 2, 1], "texture": "#button"},
+					"west": {"uv": [0, 0, 1, 1], "texture": "#button"},
+					"up": {"uv": [0, 0, 2, 1], "texture": "#button"},
+					"down": {"uv": [0, 0, 2, 1], "texture": "#button"}
+				}
+			}
+		]
+	}
+
+	
+
+}

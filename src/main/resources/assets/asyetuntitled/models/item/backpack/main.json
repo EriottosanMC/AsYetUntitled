@@ -1,0 +1,21 @@
+{   
+     "parent": "block/block",
+    "ambientocclusion": false,
+	"textures": {
+        "backpack": "asyetuntitled:item/backpack/cloth"
+	},
+    "elements": [
+        {  	
+			"from": [2, 0, 8],
+			"to": [14, 11, 14],
+			"faces": {
+				"north": {"uv": [0, 0, 12, 11], "texture": "#backpack"},
+				"east": {"uv": [0, 0, 6, 11], "texture": "#backpack"},
+				"south": {"uv": [0, 0, 12, 11], "texture": "#backpack"},
+				"west": {"uv": [0, 0, 6, 11], "texture": "#backpack"},
+				"up": {"uv": [0, 0, 12, 6], "texture": "#backpack"},
+				"down": {"uv": [0, 0, 12, 6], "texture": "#backpack"}
+			}
+        }
+    ]
+}

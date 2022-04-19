@@ -1,0 +1,164 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "asyetuntitled:item/dummy_rune/dummy_rune"
+  },
+  "overrides": [
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.0
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_a"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.04
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_b"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.08
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_c"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.12
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_d"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.16
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_e"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.20
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_f"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.24
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_g"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.28
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_h"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.32
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_i"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.36
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_j"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.40
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_k"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.44
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_l"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.48
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_m"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.52
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_n"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.56
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_o"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.60
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_p"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.64
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_q"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.68
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_r"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.72
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_s"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.76
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_t"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.80
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_u"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.84
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_v"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.88
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_w"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.92
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_x"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 0.96
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_y"
+	},
+	{
+		"predicate": {
+			"asyetuntitled:alphabet": 1.0
+		},
+		"model": "asyetuntitled:item/dummy_rune/dummy_rune_z"
+	}
+  ]
+}

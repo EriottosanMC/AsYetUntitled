@@ -1,0 +1,22 @@
+{   
+    "parent": "block/block",
+    "ambientocclusion": false,
+    "textures": {
+        "button": "asyetuntitled:item/backpack/button"
+    },
+    "elements": [
+		{
+			"name": "buttontop",
+			"from": [7, 12, 8],
+			"to": [9, 13, 9],
+			"faces": {
+				"north": {"uv": [0, 0, 2, 1], "texture": "#button"},
+				"east": {"uv": [0, 0, 1, 1], "texture": "#button"},
+				"south": {"uv": [0, 0, 2, 1], "texture": "#button"},
+				"west": {"uv": [0, 0, 1, 1], "texture": "#button"},
+				"up": {"uv": [0, 0, 2, 1], "texture": "#button"},
+				"down": {"uv": [0, 0, 2, 1], "texture": "#button"}
+			}
+		}
+    ]
+}

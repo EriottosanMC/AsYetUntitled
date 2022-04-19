@@ -1,0 +1,19 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "T",
+    "R",
+    "R"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:stick"
+    },
+    "T": {
+      "tag": "minecraft:dirt"
+    }
+  },
+  "result": {
+    "item": "asyetuntitled:living_chest_staff"
+  }
+}

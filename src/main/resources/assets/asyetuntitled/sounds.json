@@ -1,0 +1,140 @@
+{
+	"charlie_mood": {
+		"subtitle": "asyetuntitled.subtitle.charlie_mood",
+		"sounds": 
+		[ 
+			{	"name": "minecraft:ambient/cave/cave3",
+				"volume": 0.6,
+				"pitch": 0.1,
+				"stream": true
+			},
+			{	"name": "minecraft:ambient/cave/cave4",
+				"volume": 0.6,
+				"pitch": 0.1,
+				"stream": true
+			},
+			{	"name": "minecraft:ambient/cave/cave6",
+				"volume": 0.6,
+				"pitch": 0.1,
+				"stream": true
+			},
+			{	"name": "minecraft:ambient/cave/cave7",
+				"volume": 0.6,
+				"pitch": 0.1,
+				"stream": true
+			},
+			{	"name": "minecraft:ambient/cave/cave8",
+				"volume": 0.6,
+				"pitch": 0.1,
+				"stream": true
+			},
+			{	"name": "minecraft:ambient/cave/cave15",
+				"volume": 0.6,
+				"pitch": 0.1,
+				"stream": true
+			}
+		]
+	},
+	"charlie_scare": {
+		"subtitle": "asyetuntitled.subtitle.charlie_scare",
+		"sounds": [
+			{ 	"name": "minecraft:item/axe/scrape1",
+				"volume": 1.0,
+				"pitch": 1.0
+			},
+			{ 	"name": "minecraft:mob/zombie/say1",
+				"volume": 0.5,
+				"pitch": 0.4
+			},
+			{ 	"name": "minecraft:mob/zombie/say3",
+				"volume": 0.5,
+				"pitch": 0.4
+			},
+			{ 	"name": "minecraft:mob/horse/skeleton/idle1",
+				"volume": 0.5,
+				"pitch": 0.4
+			},
+			{ 	"name": "minecraft:mob/horse/skeleton/idle2",
+				"volume": 0.5,
+				"pitch": 0.4
+			},
+			{ 	"name": "minecraft:mob/horse/skeleton/idle3",
+				"volume": 0.5,
+				"pitch": 0.4
+			},
+			{
+				"name": "minecraft:mob/wolf/growl1",
+				"volume": 0.5,
+				"pitch": 0.4
+			},
+			{
+				"name": "minecraft:mob/wolf/growl2",
+				"volume": 0.5,
+				"pitch": 0.4
+			},
+			{
+				"name": "minecraft:mob/wolf/growl3",
+				"volume": 0.5,
+				"pitch": 0.4
+			}
+		]
+	},
+	"charlie_attack": {
+		"subtitle": "asyetuntitled.subtitle.charlie_attack",
+		"sounds": [
+			{ 	"name": "minecraft:item/trident/thunder1",
+				"volume": 2,
+				"pitch": 0.5,
+				"stream": true
+			},
+			{ 	"name": "minecraft:item/trident/thunder2",
+				"volume": 2,
+				"pitch": 0.5,
+				"stream": true
+			},
+			{ 	"name": "minecraft:mob/evocation_illager/fangs",
+				"volume": 2,
+				"pitch": 1.0,
+				"stream": true
+			},
+			{ 	"name": "minecraft:mob/phantom/bite1",
+				"volume": 2,
+				"pitch": 0.3
+			},
+			{ 	"name": "minecraft:mob/phantom/bite2",
+				"volume": 2,
+				"pitch": 0.3
+			}
+		]
+	},
+	"ominous_whisper": {
+		"subtitle": "asyetuntitled.subtitle.ominous_whisper",
+		"sounds": [
+			{
+				"name": "minecraft:ambient/nether/soulsand_valley/whisper3",
+				"volume": 1,
+				"pitch": 1
+			},
+			{
+				"name": "minecraft:ambient/nether/soulsand_valley/whisper4",
+				"volume": 1,
+				"pitch": 1
+			},
+			{
+				"name": "minecraft:ambient/nether/soulsand_valley/whisper6",
+				"volume": 1,
+				"pitch": 1
+			},
+			{
+				"name": "minecraft:ambient/nether/soulsand_valley/whisper7",
+				"volume": 1,
+				"pitch": 1
+			},
+			{
+				"name": "minecraft:ambient/nether/soulsand_valley/whisper8",
+				"volume": 1,
+				"pitch": 1
+			}
+		]
+	}
+}

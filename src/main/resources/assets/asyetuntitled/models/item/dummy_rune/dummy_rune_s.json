@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "asyetuntitled:item/dummy_rune/sga_s"
+  }
+}

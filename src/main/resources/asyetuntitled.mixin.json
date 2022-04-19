@@ -1,0 +1,13 @@
+{
+	"required": true,
+	"package": "asyetuntitled.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"refmap": "asyetuntitled.mixin-refmap.json",
+	"mixins": [
+	
+	],
+	"client": [
+		"MixinOptions"	
+	],
+	"minVersion": "0.8"
+}

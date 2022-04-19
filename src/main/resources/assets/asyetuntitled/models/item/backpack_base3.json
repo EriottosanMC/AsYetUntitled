@@ -1,0 +1,7 @@
+{
+  "loader": "asyetuntitled:backpack_loader",
+     "textures": 
+	 {	 "backpack": "asyetuntitled:item/backpack/top",
+        "button": "asyetuntitled:item/backpack/button"
+    }
+}

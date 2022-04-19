@@ -1,0 +1,142 @@
+package asyetuntitled.common.util;
+
+import asyetuntitled.AsYetUntitled;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.block.BaseRailBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.PressurePlateBlock;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.IForgeRegistry;
+
+public class BlockChange {
+
+	private static float slowestSpeed = 0.9F;
+//	private static float slowSpeed = 0.85F;
+	private static float fastSpeed = 1.1F;
+	private static float fastestSpeed = 1.2F;
+	
+	private static final Block[] fastest = {Blocks.STONE, Blocks.GRANITE, Blocks.POLISHED_GRANITE, Blocks.DIORITE, Blocks.POLISHED_DIORITE, Blocks.BEDROCK, Blocks.GOLD_ORE, Blocks.DEEPSLATE_GOLD_ORE, Blocks.IRON_ORE, Blocks.DEEPSLATE_IRON_ORE, 
+											Blocks.COAL_ORE, Blocks.DEEPSLATE_COAL_ORE, Blocks.GLASS, Blocks.LAPIS_ORE, Blocks.DEEPSLATE_LAPIS_ORE, Blocks.LAPIS_BLOCK, Blocks.DISPENSER, Blocks.SANDSTONE, Blocks.CHISELED_SANDSTONE, Blocks.CUT_SANDSTONE, 
+											Blocks.GOLD_BLOCK, Blocks.IRON_BLOCK, Blocks.BRICKS, Blocks.OBSIDIAN, Blocks.DIAMOND_ORE, Blocks.DEEPSLATE_DIAMOND_ORE, Blocks.DIAMOND_BLOCK, Blocks.STONE_PRESSURE_PLATE, Blocks.IRON_DOOR, Blocks.REDSTONE_ORE, 
+											Blocks.DEEPSLATE_REDSTONE_ORE, Blocks.STONE_BUTTON, Blocks.BASALT, Blocks.POLISHED_BASALT, Blocks.WHITE_STAINED_GLASS, Blocks.ORANGE_STAINED_GLASS, Blocks.MAGENTA_STAINED_GLASS, Blocks.LIGHT_BLUE_STAINED_GLASS,
+											Blocks.YELLOW_STAINED_GLASS, Blocks.LIME_STAINED_GLASS, Blocks.PINK_STAINED_GLASS, Blocks.GRAY_STAINED_GLASS, Blocks.LIGHT_GRAY_STAINED_GLASS, Blocks.CYAN_STAINED_GLASS, Blocks.PURPLE_STAINED_GLASS, 
+											Blocks.BLUE_STAINED_GLASS, Blocks.BROWN_STAINED_GLASS, Blocks.GREEN_STAINED_GLASS, Blocks.RED_STAINED_GLASS, Blocks.BLACK_STAINED_GLASS, Blocks.STONE_BRICKS, Blocks.CHISELED_STONE_BRICKS, Blocks.INFESTED_STONE, 
+											Blocks.INFESTED_STONE_BRICKS, Blocks.INFESTED_CHISELED_STONE_BRICKS, Blocks.IRON_BARS, Blocks.CHAIN, Blocks.GLASS_PANE, Blocks.BRICK_STAIRS, Blocks.STONE_BRICK_STAIRS, Blocks.NETHER_BRICKS, Blocks.NETHER_BRICK_FENCE,
+											Blocks.NETHER_BRICK_STAIRS, Blocks.END_STONE, Blocks.SANDSTONE_STAIRS, Blocks.EMERALD_ORE, Blocks.DEEPSLATE_EMERALD_ORE, Blocks.ENDER_CHEST, Blocks.EMERALD_BLOCK, Blocks.SPRUCE_STAIRS, Blocks.BIRCH_STAIRS,
+											Blocks.JUNGLE_STAIRS, Blocks.BEACON, Blocks.ANVIL, Blocks.CHIPPED_ANVIL, Blocks.LIGHT_WEIGHTED_PRESSURE_PLATE, Blocks.HEAVY_WEIGHTED_PRESSURE_PLATE, Blocks.DAYLIGHT_DETECTOR, Blocks.REDSTONE_BLOCK, 
+											Blocks.QUARTZ_BLOCK, Blocks.CHISELED_QUARTZ_BLOCK, Blocks.QUARTZ_PILLAR, Blocks.QUARTZ_STAIRS, Blocks.WHITE_TERRACOTTA, Blocks.ORANGE_TERRACOTTA, Blocks.MAGENTA_TERRACOTTA, Blocks.LIGHT_BLUE_TERRACOTTA, 
+											Blocks.YELLOW_TERRACOTTA, Blocks.LIME_TERRACOTTA, Blocks.PINK_TERRACOTTA, Blocks.GRAY_TERRACOTTA, Blocks.LIGHT_GRAY_TERRACOTTA, Blocks.CYAN_TERRACOTTA, Blocks.PURPLE_TERRACOTTA, Blocks.BLUE_TERRACOTTA, 
+											Blocks.BROWN_TERRACOTTA, Blocks.GREEN_TERRACOTTA, Blocks.RED_TERRACOTTA, Blocks.BLACK_TERRACOTTA, Blocks.WHITE_STAINED_GLASS_PANE, Blocks.ORANGE_STAINED_GLASS_PANE, Blocks.MAGENTA_STAINED_GLASS_PANE, 
+											Blocks.LIGHT_BLUE_STAINED_GLASS_PANE, Blocks.YELLOW_STAINED_GLASS_PANE, Blocks.LIME_STAINED_GLASS_PANE, Blocks.PINK_STAINED_GLASS_PANE, Blocks.GRAY_STAINED_GLASS_PANE, Blocks.LIGHT_GRAY_STAINED_GLASS_PANE, 
+											Blocks.CYAN_STAINED_GLASS_PANE, Blocks.PURPLE_STAINED_GLASS_PANE, Blocks.BLUE_STAINED_GLASS_PANE, Blocks.BROWN_STAINED_GLASS_PANE, Blocks.GREEN_STAINED_GLASS_PANE, Blocks.RED_STAINED_GLASS_PANE, Blocks.BLACK_STAINED_GLASS_PANE,
+											Blocks.PRISMARINE, Blocks.PRISMARINE_BRICKS, Blocks.DARK_PRISMARINE, Blocks.PRISMARINE_STAIRS, Blocks.PRISMARINE_BRICK_STAIRS, Blocks.DARK_PRISMARINE_STAIRS, Blocks.PRISMARINE_SLAB, Blocks.PRISMARINE_BRICK_SLAB,
+											Blocks.DARK_PRISMARINE_SLAB, Blocks.SEA_LANTERN, Blocks.TERRACOTTA, Blocks.COAL_BLOCK, Blocks.RED_SANDSTONE, Blocks.CHISELED_RED_SANDSTONE, Blocks.CUT_RED_SANDSTONE, Blocks.RED_SANDSTONE_STAIRS, Blocks.STONE_SLAB,
+											Blocks.SMOOTH_STONE_SLAB, Blocks.SANDSTONE_SLAB, Blocks.CUT_SANDSTONE_SLAB, Blocks.BRICK_SLAB, Blocks.STONE_BRICK_SLAB, Blocks.NETHER_BRICK_SLAB, Blocks.QUARTZ_SLAB, Blocks.RED_SANDSTONE_SLAB, Blocks.PURPUR_SLAB,
+											Blocks.SMOOTH_STONE, Blocks.SMOOTH_SANDSTONE, Blocks.SMOOTH_QUARTZ, Blocks.SMOOTH_RED_SANDSTONE, Blocks.PURPUR_BLOCK, Blocks.PURPUR_PILLAR, Blocks.PURPUR_STAIRS, Blocks.END_STONE_BRICKS, Blocks.BONE_BLOCK, Blocks.SHULKER_BOX,
+											Blocks.WHITE_SHULKER_BOX, Blocks.ORANGE_SHULKER_BOX, Blocks.MAGENTA_SHULKER_BOX, Blocks.LIGHT_BLUE_SHULKER_BOX, Blocks.YELLOW_SHULKER_BOX, Blocks.LIME_SHULKER_BOX, Blocks.PINK_SHULKER_BOX, Blocks.GRAY_SHULKER_BOX, 
+											Blocks.LIGHT_GRAY_SHULKER_BOX, Blocks.CYAN_SHULKER_BOX, Blocks.PURPLE_SHULKER_BOX, Blocks.BLUE_SHULKER_BOX, Blocks.BROWN_SHULKER_BOX, Blocks.GREEN_SHULKER_BOX, Blocks.RED_SHULKER_BOX, Blocks.BLACK_SHULKER_BOX, 
+											Blocks.WHITE_GLAZED_TERRACOTTA, Blocks.ORANGE_GLAZED_TERRACOTTA, Blocks.MAGENTA_GLAZED_TERRACOTTA, Blocks.LIGHT_BLUE_GLAZED_TERRACOTTA, Blocks.YELLOW_GLAZED_TERRACOTTA, Blocks.LIME_GLAZED_TERRACOTTA, Blocks.PINK_GLAZED_TERRACOTTA,
+											Blocks.GRAY_GLAZED_TERRACOTTA, Blocks.LIGHT_GRAY_GLAZED_TERRACOTTA, Blocks.CYAN_GLAZED_TERRACOTTA, Blocks.PURPLE_GLAZED_TERRACOTTA, Blocks.BLUE_GLAZED_TERRACOTTA, Blocks.BROWN_GLAZED_TERRACOTTA, Blocks.GREEN_GLAZED_TERRACOTTA, 
+											Blocks.RED_GLAZED_TERRACOTTA, Blocks.BLACK_GLAZED_TERRACOTTA, Blocks.WHITE_CONCRETE, Blocks.ORANGE_CONCRETE, Blocks.MAGENTA_CONCRETE, Blocks.LIGHT_BLUE_CONCRETE, Blocks.YELLOW_CONCRETE, Blocks.LIME_CONCRETE, Blocks.PINK_CONCRETE,
+											Blocks.GRAY_CONCRETE, Blocks.LIGHT_GRAY_CONCRETE, Blocks.CYAN_CONCRETE, Blocks.PURPLE_CONCRETE, Blocks.BLUE_CONCRETE, Blocks.BROWN_CONCRETE, Blocks.GREEN_CONCRETE, Blocks.RED_CONCRETE, Blocks.BLACK_CONCRETE,
+											Blocks.POLISHED_GRANITE_STAIRS, Blocks.SMOOTH_RED_SANDSTONE_STAIRS, Blocks.POLISHED_DIORITE_STAIRS, Blocks.END_STONE_BRICK_STAIRS, Blocks.STONE_STAIRS, Blocks.SMOOTH_SANDSTONE_STAIRS, Blocks.SMOOTH_QUARTZ_STAIRS,
+											Blocks.GRANITE_STAIRS, Blocks.ANDESITE_STAIRS, Blocks.POLISHED_ANDESITE_STAIRS, Blocks.DIORITE_STAIRS, Blocks.POLISHED_GRANITE_SLAB, Blocks.SMOOTH_RED_SANDSTONE_SLAB, Blocks.POLISHED_DIORITE_SLAB, Blocks.END_STONE_BRICK_SLAB,
+											Blocks.SMOOTH_SANDSTONE_SLAB, Blocks.SMOOTH_QUARTZ_SLAB, Blocks.GRANITE_SLAB, Blocks.ANDESITE_SLAB, Blocks.POLISHED_ANDESITE_SLAB, Blocks.DIORITE_SLAB, Blocks.BRICK_WALL, Blocks.PRISMARINE_WALL, Blocks.RED_SANDSTONE_WALL, 
+											Blocks.GRANITE_WALL, Blocks.STONE_BRICK_WALL, Blocks.NETHER_BRICK_WALL, Blocks.ANDESITE_WALL, Blocks.SANDSTONE_WALL, Blocks.END_STONE_BRICK_WALL, Blocks.DIORITE_WALL, Blocks.BLAST_FURNACE, Blocks.NETHERITE_BLOCK, 
+											Blocks.CRYING_OBSIDIAN, Blocks.RESPAWN_ANCHOR, Blocks.LODESTONE, Blocks.POLISHED_BLACKSTONE, Blocks.POLISHED_BLACKSTONE_BRICKS, Blocks.CHISELED_POLISHED_BLACKSTONE, Blocks.POLISHED_BLACKSTONE_BRICK_SLAB,
+											Blocks.POLISHED_BLACKSTONE_BRICK_STAIRS, Blocks.POLISHED_BLACKSTONE_BRICK_WALL, Blocks.POLISHED_BLACKSTONE_STAIRS, Blocks.POLISHED_BLACKSTONE_SLAB, Blocks.POLISHED_BLACKSTONE_PRESSURE_PLATE, Blocks.POLISHED_BLACKSTONE_BUTTON,
+											Blocks.POLISHED_BLACKSTONE_WALL, Blocks.CHISELED_NETHER_BRICKS, Blocks.QUARTZ_BRICKS, Blocks.AMETHYST_BLOCK, Blocks.TINTED_GLASS, Blocks.OXIDIZED_COPPER, Blocks.WEATHERED_COPPER, Blocks.EXPOSED_COPPER, Blocks.COPPER_BLOCK,
+											Blocks.COPPER_ORE, Blocks.DEEPSLATE_COPPER_ORE, Blocks.OXIDIZED_CUT_COPPER, Blocks.WEATHERED_CUT_COPPER, Blocks.EXPOSED_CUT_COPPER, Blocks.CUT_COPPER, Blocks.OXIDIZED_CUT_COPPER_STAIRS, Blocks.WAXED_WEATHERED_CUT_COPPER_STAIRS,
+											Blocks.EXPOSED_CUT_COPPER_STAIRS, Blocks.CUT_COPPER_STAIRS, Blocks.OXIDIZED_CUT_COPPER_SLAB, Blocks.WEATHERED_CUT_COPPER_SLAB, Blocks.EXPOSED_CUT_COPPER_SLAB, Blocks.CUT_COPPER_SLAB, Blocks.WAXED_COPPER_BLOCK, 
+											Blocks.WAXED_WEATHERED_COPPER, Blocks.WAXED_EXPOSED_COPPER, Blocks.WAXED_OXIDIZED_COPPER, Blocks.WAXED_OXIDIZED_CUT_COPPER, Blocks.WAXED_WEATHERED_CUT_COPPER, Blocks.WAXED_EXPOSED_CUT_COPPER, Blocks.WAXED_CUT_COPPER,
+											Blocks.WAXED_OXIDIZED_CUT_COPPER_STAIRS, Blocks.WAXED_WEATHERED_CUT_COPPER_STAIRS, Blocks.WAXED_EXPOSED_CUT_COPPER_STAIRS, Blocks.WAXED_CUT_COPPER_STAIRS, Blocks.WAXED_OXIDIZED_CUT_COPPER_STAIRS, Blocks.WAXED_EXPOSED_CUT_COPPER_STAIRS,
+											Blocks.WAXED_CUT_COPPER_STAIRS, Blocks.WAXED_OXIDIZED_CUT_COPPER_SLAB, Blocks.WAXED_WEATHERED_CUT_COPPER_SLAB, Blocks.WAXED_EXPOSED_CUT_COPPER_SLAB, Blocks.WAXED_CUT_COPPER_SLAB, Blocks.POLISHED_DEEPSLATE, Blocks.POLISHED_DEEPSLATE_STAIRS,
+											Blocks.POLISHED_DEEPSLATE_SLAB, Blocks.POLISHED_DEEPSLATE_WALL, Blocks.DEEPSLATE_TILES, Blocks.DEEPSLATE_TILE_STAIRS, Blocks.DEEPSLATE_TILE_SLAB, Blocks.DEEPSLATE_TILE_WALL, Blocks.DEEPSLATE_BRICKS, Blocks.DEEPSLATE_BRICK_WALL, 
+											Blocks.DEEPSLATE_BRICK_SLAB, Blocks.DEEPSLATE_BRICK_STAIRS, Blocks.CHISELED_DEEPSLATE, Blocks.SMOOTH_BASALT};
+	
+	private static final Block[] fast = {Blocks.COBBLESTONE, Blocks.OAK_PLANKS, Blocks.SPRUCE_PLANKS, Blocks.BIRCH_PLANKS, Blocks.JUNGLE_PLANKS, Blocks.ACACIA_PLANKS, Blocks.DARK_OAK_PLANKS, Blocks.DIRT_PATH, Blocks.GRAVEL, Blocks.STRIPPED_ACACIA_LOG,
+										 Blocks.STRIPPED_BIRCH_LOG, Blocks.STRIPPED_DARK_OAK_LOG, Blocks.STRIPPED_JUNGLE_LOG, Blocks.STRIPPED_OAK_LOG, Blocks.STRIPPED_SPRUCE_LOG, Blocks.STRIPPED_ACACIA_WOOD, Blocks.STRIPPED_BIRCH_WOOD, Blocks.STRIPPED_DARK_OAK_WOOD,
+										 Blocks.STRIPPED_JUNGLE_WOOD, Blocks.STRIPPED_OAK_WOOD, Blocks.STRIPPED_SPRUCE_WOOD, Blocks.NOTE_BLOCK, Blocks.POWERED_RAIL, Blocks.DETECTOR_RAIL, Blocks.BOOKSHELF, Blocks.OAK_STAIRS, Blocks.CHEST, Blocks.CRAFTING_TABLE,
+										 Blocks.FURNACE, Blocks.OAK_SIGN, Blocks.SPRUCE_SIGN, Blocks.BIRCH_SIGN, Blocks.ACACIA_SIGN, Blocks.JUNGLE_SIGN, Blocks.DARK_OAK_SIGN, Blocks.OAK_DOOR, Blocks.LADDER, Blocks.RAIL, Blocks.COBBLESTONE_STAIRS, Blocks.OAK_PRESSURE_PLATE,
+										 Blocks.SPRUCE_PRESSURE_PLATE, Blocks.BIRCH_PRESSURE_PLATE, Blocks.JUNGLE_PRESSURE_PLATE, Blocks.ACACIA_PRESSURE_PLATE, Blocks.DARK_OAK_PRESSURE_PLATE, Blocks.JUKEBOX, Blocks.OAK_FENCE, Blocks.NETHER_GOLD_ORE, Blocks.NETHERRACK,
+										 Blocks.GLOWSTONE, Blocks.MOSSY_STONE_BRICKS, Blocks.CRACKED_STONE_BRICKS, Blocks.INFESTED_COBBLESTONE, Blocks.INFESTED_COBBLESTONE, Blocks.INFESTED_MOSSY_STONE_BRICKS, Blocks.INFESTED_CRACKED_STONE_BRICKS, Blocks.ENCHANTING_TABLE,
+										 Blocks.END_PORTAL_FRAME, Blocks.REDSTONE_LAMP, Blocks.COBBLESTONE_WALL, Blocks.OAK_BUTTON, Blocks.SPRUCE_BUTTON, Blocks.BIRCH_BUTTON, Blocks.JUNGLE_BUTTON, Blocks.ACACIA_BUTTON, Blocks.DARK_OAK_BUTTON, Blocks.DAMAGED_ANVIL,
+										 Blocks.TRAPPED_CHEST, Blocks.NETHER_QUARTZ_ORE, Blocks.ACTIVATOR_RAIL, Blocks.DROPPER, Blocks.ACACIA_STAIRS, Blocks.DARK_OAK_STAIRS, Blocks.PACKED_ICE, Blocks.OAK_SLAB, Blocks.SPRUCE_SLAB, Blocks.BIRCH_SLAB, Blocks.JUNGLE_SLAB,
+										 Blocks.ACACIA_SLAB, Blocks.DARK_OAK_SLAB, Blocks.COBBLESTONE_SLAB, Blocks.OAK_FENCE_GATE, Blocks.SPRUCE_FENCE_GATE, Blocks.BIRCH_FENCE_GATE, Blocks.JUNGLE_FENCE_GATE, Blocks.ACACIA_FENCE_GATE, Blocks.DARK_OAK_FENCE_GATE,
+										 Blocks.SPRUCE_FENCE, Blocks.BIRCH_FENCE, Blocks.JUNGLE_FENCE, Blocks.ACACIA_FENCE, Blocks.DARK_OAK_FENCE, Blocks.SPRUCE_DOOR, Blocks.BIRCH_DOOR, Blocks.JUNGLE_DOOR, Blocks.ACACIA_DOOR, Blocks.DARK_OAK_DOOR, Blocks.DIRT_PATH,
+										 Blocks.FROSTED_ICE, Blocks.RED_NETHER_BRICKS, Blocks.OBSERVER, Blocks.BLUE_ICE, Blocks.MOSSY_STONE_BRICK_STAIRS, Blocks.RED_NETHER_BRICK_STAIRS, Blocks.MOSSY_STONE_BRICK_SLAB, Blocks.RED_NETHER_BRICK_SLAB, Blocks.MOSSY_STONE_BRICK_WALL,
+										 Blocks.RED_NETHER_BRICK_WALL, Blocks.ANCIENT_DEBRIS, Blocks.BLACKSTONE, Blocks.BLACKSTONE_STAIRS, Blocks.BLACKSTONE_WALL, Blocks.BLACKSTONE_SLAB, Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS, Blocks.GILDED_BLACKSTONE, 
+										 Blocks.CRACKED_NETHER_BRICKS, Blocks.BUDDING_AMETHYST, Blocks.CALCITE, Blocks.DEEPSLATE, Blocks.CRACKED_DEEPSLATE_BRICKS, Blocks.CRACKED_DEEPSLATE_TILES, Blocks.INFESTED_DEEPSLATE, Blocks.RAW_IRON_BLOCK, Blocks.RAW_COPPER_BLOCK, 
+										 Blocks.RAW_GOLD_BLOCK, Blocks.STICKY_PISTON, Blocks.PISTON, Blocks.PISTON_HEAD, Blocks.MOVING_PISTON};
+	
+//	private static final Block[] slow = {Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.WHITE_WOOL, Blocks.ORANGE_WOOL, Blocks.MAGENTA_WOOL, Blocks.LIGHT_BLUE_WOOL, Blocks.YELLOW_WOOL, Blocks.LIME_WOOL, Blocks.PINK_WOOL, Blocks.GRAY_WOOL, Blocks.LIGHT_GRAY_WOOL, Blocks.CYAN_WOOL,
+//										 Blocks.PURPLE_WOOL, Blocks.BLUE_WOOL, Blocks.BLACK_WOOL, Blocks.BROWN_MUSHROOM_BLOCK, Blocks.RED_MUSHROOM_BLOCK, Blocks.MUSHROOM_STEM, Blocks.LILY_PAD, Blocks.WHITE_CARPET, Blocks.ORANGE_CARPET, Blocks.MAGENTA_CARPET, 
+//										 Blocks.LIGHT_BLUE_CARPET, Blocks.YELLOW_CARPET, Blocks.LIME_CARPET, Blocks.PINK_CARPET, Blocks.GRAY_CARPET, Blocks.LIGHT_GRAY_CARPET, Blocks.CYAN_CARPET, Blocks.PURPLE_CARPET, Blocks.BLUE_CARPET, Blocks.BROWN_CARPET, 
+//										 Blocks.GREEN_CARPET, Blocks.RED_CARPET, Blocks.BLACK_CARPET, Blocks.MAGMA_BLOCK, Blocks.CAMPFIRE, Blocks.SOUL_CAMPFIRE, Blocks.WARPED_STEM, Blocks.STRIPPED_WARPED_STEM, Blocks.WARPED_HYPHAE, Blocks.STRIPPED_WARPED_HYPHAE,
+//										 Blocks.CRIMSON_STEM, Blocks.STRIPPED_CRIMSON_STEM, Blocks.CRIMSON_HYPHAE, Blocks.STRIPPED_CRIMSON_HYPHAE, Blocks.SHROOMLIGHT, Blocks.WEEPING_VINES, Blocks.TWISTING_VINES, Blocks.SCULK_SENSOR, Blocks.CAVE_VINES};
+	
+	private static final Block[] slowest = {Blocks.COARSE_DIRT, Blocks.PODZOL, Blocks.SAND, Blocks.RED_SAND, Blocks.OAK_LEAVES, Blocks.SPRUCE_LEAVES, Blocks.BIRCH_LEAVES, Blocks.JUNGLE_LEAVES, Blocks.ACACIA_LEAVES, Blocks.DARK_OAK_LEAVES, Blocks.AZALEA_LEAVES, 
+											Blocks.FLOWERING_AZALEA_LEAVES, Blocks.SPONGE, Blocks.WET_SPONGE, Blocks.WHITE_BED, Blocks.ORANGE_BED, Blocks.MAGENTA_BED, Blocks.LIGHT_BLUE_BED, Blocks.YELLOW_BED, Blocks.LIME_BED, Blocks.PINK_BED, Blocks.GRAY_BED,
+											Blocks.LIGHT_GRAY_BED, Blocks.CYAN_BED, Blocks.PURPLE_BED, Blocks.BLUE_BED, Blocks.BROWN_BED, Blocks.GREEN_BED, Blocks.RED_BED, Blocks.BLACK_BED, Blocks.FARMLAND, Blocks.SNOW, Blocks.SNOW_BLOCK, Blocks.CLAY, Blocks.SOUL_SOIL,
+											Blocks.CAKE, Blocks.VINE, Blocks.GLOW_LICHEN, Blocks.MYCELIUM, Blocks.SLIME_BLOCK, Blocks.HAY_BLOCK, Blocks.WHITE_CONCRETE_POWDER, Blocks.ORANGE_CONCRETE_POWDER, Blocks.MAGENTA_CONCRETE_POWDER, Blocks.LIGHT_BLUE_CONCRETE_POWDER,
+											Blocks.YELLOW_CONCRETE_POWDER, Blocks.LIME_CONCRETE_POWDER, Blocks.PINK_CONCRETE_POWDER, Blocks.GRAY_CONCRETE_POWDER, Blocks.LIGHT_GRAY_CONCRETE_POWDER, Blocks.CYAN_CONCRETE_POWDER, Blocks.PURPLE_CONCRETE_POWDER, 
+											Blocks.BLUE_CONCRETE_POWDER, Blocks.BROWN_CONCRETE_POWDER, Blocks.GREEN_CONCRETE_POWDER, Blocks.RED_CONCRETE_POWDER, Blocks.BLACK_CONCRETE_POWDER, Blocks.SCAFFOLDING, Blocks.WARPED_NYLIUM, Blocks.NETHER_WART_BLOCK, 
+											Blocks.WARPED_WART_BLOCK, Blocks.CRIMSON_NYLIUM, Blocks.HONEY_BLOCK, Blocks.POWDER_SNOW, Blocks.ROOTED_DIRT, Blocks.MOSS_BLOCK, Blocks.MOSS_CARPET};
+	
+	public static void init() 
+	{
+		for(Block block : fastest)
+		{
+			CommonReflectionHelper.setSpeedFactor(block, fastestSpeed);
+		}
+		for(Block block : fast)
+		{
+			CommonReflectionHelper.setSpeedFactor(block, fastSpeed);
+		}
+//		for(Block block : slow)
+//		{
+//			CommonReflectionHelper.setSpeedFactor(block, slowSpeed);
+//		}
+		for(Block block : slowest)
+		{
+			CommonReflectionHelper.setSpeedFactor(block, slowestSpeed);
+		}
+		
+		BlockBehaviour.StateArgumentPredicate<EntityType<?>> allowSpawn = (state, level, pos, t) -> {
+			return state.getLightEmission(level, pos) < 14;
+		};
+		
+		BlockBehaviour.StateArgumentPredicate<EntityType<?>> denySpawn = (state, level, pos, t) -> {
+			return false;
+		};
+		IForgeRegistry<Block> blockRegistry = ForgeRegistries.BLOCKS;
+		for(Block block : blockRegistry)
+		{
+			BlockBehaviour.Properties properties = CommonReflectionHelper.getBlockProperties(block);
+			Material material = block.defaultBlockState().getMaterial();
+			if(material == Material.BAMBOO || material == Material.WOOD || material == Material.WOOL)
+			{
+				properties.isValidSpawn(denySpawn);
+				AsYetUntitled.logMessage("Set " + block.getRegistryName().getPath() + " to block spawn");
+			}
+			else if(block instanceof SlabBlock || block instanceof StairBlock || block instanceof BaseRailBlock || block instanceof PressurePlateBlock)
+			{
+				properties.isValidSpawn(allowSpawn);
+				AsYetUntitled.logMessage("Set " + block.getRegistryName().getPath() + " to allow spawn");
+			}
+			
+			if(block.defaultDestroyTime() < 0.15F)
+			{
+				properties.strength(0.15F, 0.0F);
+				block.getStateDefinition().getPossibleStates().forEach(state -> CommonReflectionHelper.setBlockStateDestroySpeed(state, 0.15F));
+				AsYetUntitled.logMessage("Stopped " + block.getRegistryName().getPath() + " from instabreaking");
+			}
+		}
+		
+	}
+}

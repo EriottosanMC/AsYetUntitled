@@ -1,0 +1,19 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "TTT",
+    "RTR",
+    "TRT"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "T": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "minecraft:piston"
+  }
+}
