@@ -29,6 +29,15 @@ public class ClientResourceLocations
 	public static ResourceLocation CHARLIE_ATTACK = new ResourceLocation(AsYetUntitled.MODID, "charlie_attack");
 	public static ResourceLocation OMINOUS_WHISPER = new ResourceLocation(AsYetUntitled.MODID, "ominous_whisper");
 
+	public static ResourceLocation SHADOW_SPIDER_AMBIENT = new ResourceLocation(AsYetUntitled.MODID, "shadow_spider_ambient");
+    public static ResourceLocation SHADOW_SPIDER_HURT = new ResourceLocation(AsYetUntitled.MODID, "shadow_spider_hurt");
+    public static ResourceLocation SHADOW_SPIDER_DEATH = new ResourceLocation(AsYetUntitled.MODID, "shadow_spider_death");
+    public static ResourceLocation SHADOW_SPIDER_STEP = new ResourceLocation(AsYetUntitled.MODID, "shadow_spider_step");
+    public static ResourceLocation SHADOW_CHICKEN_AMBIENT = new ResourceLocation(AsYetUntitled.MODID, "shadow_chicken_ambient");
+    public static ResourceLocation SHADOW_CHICKEN_HURT = new ResourceLocation(AsYetUntitled.MODID, "shadow_chicken_hurt");
+    public static ResourceLocation SHADOW_CHICKEN_DEATH = new ResourceLocation(AsYetUntitled.MODID, "shadow_chicken_death");
+    public static ResourceLocation SHADOW_CHICKEN_STEP = new ResourceLocation(AsYetUntitled.MODID, "shadow_chicken_step");
+
 	//Shaders
 	public static ResourceLocation SANITY_SHADER = new ResourceLocation(AsYetUntitled.MODID, "shaders/sanity.json");
 	

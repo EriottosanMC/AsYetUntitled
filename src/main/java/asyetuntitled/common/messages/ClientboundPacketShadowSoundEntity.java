@@ -4,9 +4,8 @@ import java.util.function.Supplier;
 
 import org.apache.commons.lang3.Validate;
 
-import asyetuntitled.client.test.ClientSanityData;
+import asyetuntitled.client.sanity.ClientSanityData;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
@@ -38,7 +37,7 @@ public class ClientboundPacketShadowSoundEntity {
 	}
 
 	public ClientboundPacketShadowSoundEntity(FriendlyByteBuf buf) {
-		this.sound = Registry.SOUND_EVENT.byId(buf.readVarInt());
+		this.sound = buf.readRegistryIdSafe(SoundEvent.class);
 		this.source = buf.readEnum(SoundSource.class);
 		this.x = buf.readInt();
 		this.y = buf.readInt();
@@ -49,8 +48,8 @@ public class ClientboundPacketShadowSoundEntity {
 	}
 
 	public void write(FriendlyByteBuf buf) {
-		buf.writeVarInt(Registry.SOUND_EVENT.getId(this.sound));
-		buf.writeEnum(this.source);
+	    buf.writeRegistryId(this.sound);
+	    buf.writeEnum(this.source);
 		buf.writeInt(this.x);
 		buf.writeInt(this.y);
 		buf.writeInt(this.z);
@@ -98,7 +97,7 @@ public class ClientboundPacketShadowSoundEntity {
 			// Here we are client side.
 			 // Be very careful not to access client-only classes here! (like Minecraft) because
 			 // this packet needs to be available server-side too
-			ClientSanityData.playSound(this.sound, this.source, new BlockPos(this.x, this.y, this.z), this.pitch, this.sanityThreshold);
+			ClientSanityData.playSound(this.sound, this.source, new BlockPos(this.x, this.y, this.z), this.volume, this.pitch, this.sanityThreshold);
 		 });
 		 return true;
 	 }

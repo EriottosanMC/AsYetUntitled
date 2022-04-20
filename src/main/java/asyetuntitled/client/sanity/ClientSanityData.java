@@ -1,9 +1,10 @@
-package asyetuntitled.client.test;
+package asyetuntitled.client.sanity;
 
 import java.util.List;
 import java.util.Random;
 
 import asyetuntitled.AsYetUntitled;
+import asyetuntitled.client.sound.FollowingSoundInstance;
 import asyetuntitled.client.util.ClientReflectionHelper;
 import asyetuntitled.client.util.ClientResourceLocations;
 import asyetuntitled.client.util.SoundsRegistry;
@@ -197,11 +198,12 @@ public class ClientSanityData
 		}
 	}
 
-	public static void playSound(SoundEvent sound, SoundSource source, BlockPos pos, float pitch, float sanityThreshold) 
+	public static void playSound(SoundEvent sound, SoundSource source, BlockPos pos, float volumeO, float pitch, float sanityThreshold) 
 	{
     	float volume = 1.0F - (getPlayerSanity() / sanityThreshold);
     	if(volume > 1.0F) volume = 1.0F;
     	else if(volume < 0) volume = 0F;
+    	volume *= volumeO;
 		Minecraft mc = Minecraft.getInstance();
 		Level level = mc.level;
     	level.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), sound, source, volume, pitch, false);

@@ -13,7 +13,7 @@ import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.math.Vector3f;
 
 import asyetuntitled.AsYetUntitled;
-import asyetuntitled.client.test.ClientSanityData;
+import asyetuntitled.client.sanity.ClientSanityData;
 import asyetuntitled.client.util.ClientReflectionHelper;
 import asyetuntitled.client.util.RendererChanger;
 import asyetuntitled.common.item.ItemBackpack;

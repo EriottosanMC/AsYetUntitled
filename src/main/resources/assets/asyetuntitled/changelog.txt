@@ -1,0 +1,30 @@
+As Yet Untitled - Change log
+- Eriottosan
+
+v. 1.18.2-0.0.2.0 - Making it harder!
+
+- Steve has more to say about the darkness
+- Steve has finally realised he doesn't have infinitely deep pockets. He will now need help carrying things
+- Added stumps. These can only be destroyed (in reasonable time) with an axe once the dirt has been removed beneath them
+- Trees are now stumped
+-
+
+-----------------------------------------------------------------------------------
+
+v. 1.18.2-0.0.1.0 - Sending you insane!
+
+- Some blocks are more fun to walk on than others
+- The sunset is prettier
+- The dark is scarier
+- The moon is more important
+- The darkness will send you insane
+- Mobs now spawn in awkward spaces
+- Mobs no longer spawn on wood
+- Mobs attacking you will send you insane
+- Eating bad food will send you insane
+- Certain commands in creative mode will send you more or less insane
+- The world becomes bleaker the more insane you are
+- You may start to see things you couldn't before
+- Good food makes you more sane (bad food does not)
+- Some mobs (currently only spawnable with commands) can only be seen if you are insane enough
+- Something is moving in the darkness

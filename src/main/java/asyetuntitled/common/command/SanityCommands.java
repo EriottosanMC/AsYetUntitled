@@ -35,7 +35,7 @@ public class SanityCommands {
 		player.getCapability(PlayerSanityProvider.PLAYER_SANITY).ifPresent(sanity -> {
 			sanity.setSanity(player, set, force);
 		});		
-		command.sendSuccess(new TranslatableComponent("commands.sanity.set", set), false);
+		command.sendSuccess(new TranslatableComponent("commands.asyetuntitled.sanity.set", set, force), false);
 
 		return set;
 	}
@@ -47,7 +47,7 @@ public class SanityCommands {
 		player.getCapability(PlayerSanityProvider.PLAYER_SANITY).ifPresent(sanity -> {
 			sanity.changeSanity(player, change, force);
 		});		
-		command.sendSuccess(new TranslatableComponent("commands.sanity.change", change), false);
+		command.sendSuccess(new TranslatableComponent("commands.asyetuntitled.sanity.change", change, force), false);
 
 		return change;
 	}

@@ -31,6 +31,13 @@ public class BlocksRegistry
 	public static final RegistryObject<Block> GRASSUSEFUL = BLOCKS.register("grassuseful", () -> new TallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().strength(0.2F, 0.0F)));
 	public static final RegistryObject<Block> TALLGRASSUSEFUL = BLOCKS.register("tallgrassuseful", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS).strength(0.2F, 0.0F)));
 
+	public static final RegistryObject<Block> OAK_STUMP = BLOCKS.register("oak_stump", () -> new StumpBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.2F, 0.0F).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
+    public static final RegistryObject<Block> BIRCH_STUMP = BLOCKS.register("birch_stump", () -> new StumpBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.2F, 0.0F).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
+    public static final RegistryObject<Block> SPRUCE_STUMP = BLOCKS.register("spruce_stump", () -> new StumpBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.2F, 0.0F).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
+    public static final RegistryObject<Block> JUNGLE_STUMP = BLOCKS.register("jungle_stump", () -> new StumpBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.2F, 0.0F).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
+    public static final RegistryObject<Block> ACACIA_STUMP = BLOCKS.register("acacia_stump", () -> new StumpBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.2F, 0.0F).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
+    public static final RegistryObject<Block> DARK_OAK_STUMP = BLOCKS.register("dark_oak_stump", () -> new StumpBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.2F, 0.0F).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
+
 	
 //	private static ResourceLocation fastestTagID = new ResourceLocation(UMM.MODID, "fastest");
 //	public static Tag<Block> fastestTag = BlockTags.getAllTags().getTagOrEmpty(fastestTagID);

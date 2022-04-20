@@ -5,7 +5,7 @@ import java.util.List;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.datafixers.util.Pair;
 import asyetuntitled.AsYetUntitled;
-import asyetuntitled.client.test.ClientSanityData;
+import asyetuntitled.client.sanity.ClientSanityData;
 import asyetuntitled.common.command.SanityCommands;
 import asyetuntitled.common.entity.ShadowCreature;
 import asyetuntitled.common.entity.livingchest.LivingChest;

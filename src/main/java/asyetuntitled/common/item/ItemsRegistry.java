@@ -21,7 +21,6 @@ public class ItemsRegistry
 	            return new ItemStack(ItemsRegistry.BLANK_SLOT.get());
 	        }
 	};
-	
 	public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(ITEM_GROUP);
 	
 	public static final RegistryObject<Item> BLANK_SLOT = ITEMS.register("blank_slot", () -> new ItemBlankSlot(new Item.Properties().tab(ITEM_GROUP).stacksTo(1)));
@@ -44,7 +43,7 @@ public class ItemsRegistry
 
 	public static final RegistryObject<Item> GRASS_ITEM = ITEMS.register("grass", () -> new Item(new Item.Properties().tab(ITEM_GROUP)));
 
-	
+	public static final RegistryObject<Item> GRASS_BUNDLE = ITEMS.register("grass_bundle", () -> new CustomBundleItem(ArmorMaterialInit.BACKPACK_SIMPLE, new Item.Properties().stacksTo(1).tab(ITEM_GROUP)));
 	
 	
 	public static void registerItems(IEventBus bus) 

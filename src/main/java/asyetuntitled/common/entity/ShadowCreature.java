@@ -1,6 +1,6 @@
 package asyetuntitled.common.entity;
 
-import asyetuntitled.client.test.ClientSanityData;
+import asyetuntitled.client.sanity.ClientSanityData;
 import asyetuntitled.common.util.capability.PlayerSanity;
 import asyetuntitled.common.util.capability.PlayerSanityProvider;
 import net.minecraft.world.entity.player.Player;
@@ -9,6 +9,8 @@ import net.minecraft.world.level.Level;
 public interface ShadowCreature
 {
 	float getSanityThreshold();
+	
+	float getFullStrengthThreshold();
 	
 	default boolean canPlayerSee(Player player)
 	{
@@ -37,7 +39,7 @@ public interface ShadowCreature
 			sanity = player.getCapability(PlayerSanityProvider.PLAYER_SANITY).map(PlayerSanity::getSanity).get();
 		}
 		
-		float ret = sanity / this.getSanityThreshold();
+		float ret = (sanity - this.getFullStrengthThreshold()) / (this.getSanityThreshold() - this.getFullStrengthThreshold());
 		if(ret > 1) ret = 1.0F;
 		else if(ret < 0) ret = 0.0F;
 		
