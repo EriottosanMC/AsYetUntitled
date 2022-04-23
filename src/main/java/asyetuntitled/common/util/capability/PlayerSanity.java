@@ -56,7 +56,7 @@ public class PlayerSanity
 	
 	public void debugCycleSanity(Player player)
 	{
-		int i = ClientSanityData.getPlayerSanityRaw();
+	    int i = ClientSanityData.getPlayerSanityRaw();
 		if(i >= AsYetUntitled.MAX_SANITY)
 		{
 			this.setSanity(player, 0);

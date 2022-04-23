@@ -14,11 +14,11 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class LivingChestScreen extends AbstractContainerScreen<LivingChestContainer>
 {
-	public LivingChestScreen(LivingChestContainer container, Inventory inv, Component name)
-	{
-		super(container, inv, name);
-	}
-	
+    public LivingChestScreen(LivingChestContainer container, Inventory inv, Component name)
+    {
+        super(container, inv, name);
+    }
+    
     @Override
     public void render(PoseStack matrixStack, int mouseX, int mouseY, float partialTicks) {
         this.renderBackground(matrixStack);

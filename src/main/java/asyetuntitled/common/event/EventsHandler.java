@@ -7,6 +7,7 @@ import asyetuntitled.common.block.ModTags;
 import asyetuntitled.common.entity.backpack.EntityBackpack;
 import asyetuntitled.common.item.ItemBackpack;
 import asyetuntitled.common.item.ItemsRegistry;
+import asyetuntitled.common.util.capability.PlayerSanityProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
@@ -16,6 +17,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.Entity;
@@ -28,7 +30,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -48,6 +53,10 @@ import net.minecraftforge.event.entity.player.PlayerEvent.ItemCraftedEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.ItemPickupEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.PlayerRespawnEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
+import net.minecraftforge.event.entity.player.SleepingTimeCheckEvent;
+import net.minecraftforge.event.world.SleepFinishedTimeEvent;
+import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -64,6 +73,75 @@ public class EventsHandler {
 			event.getToolTip().clear();
 		}
 	}
+	
+	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
+    public static void onSleepFinished(SleepFinishedTimeEvent event)
+    {
+	    ServerLevel server = (ServerLevel) event.getWorld();
+	    long fullTime = server.dayTime();
+	    long dayTime = fullTime % 24000L;
+	    boolean isNight = dayTime > 13000L;
+	    long addTime = 8000L;
+	    long combinedTime = addTime + dayTime;
+	   
+	    if(isNight && combinedTime > 24000L)
+	    {
+	        addTime -= (combinedTime - 24000L);
+	    }
+	    else if(!isNight && combinedTime > 13000L)
+	    {
+	        addTime -= (combinedTime - 13000L);
+	    }
+	    event.setTimeAddition(fullTime + addTime);
+	    server.players().stream().filter(Player::isSleepingLongEnough).forEach(player -> {
+	        player.getCapability(PlayerSanityProvider.PLAYER_SANITY).ifPresent(sanity -> {
+	           sanity.changeSanity(player, 1000); 
+	        });
+	        System.out.println("hello");
+	    });
+    }
+	
+	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
+    public static void onSleepInBed(PlayerSleepInBedEvent event)
+    {
+//	    Player player = event.getPlayer();
+//        Level level = player.level;
+//        BlockPos pos = event.getPos();
+//        float timeSinceMidday =  event.getPlayer().level.getTimeOfDay(1.0F);
+//        
+//        Player.BedSleepingProblem problem = Result.DENY;
+//        boolean isBed = level.getBlockState(pos).getBlock() instanceof BedBlock;
+//        boolean isLeanTo = player.getItemInHand(InteractionHand.MAIN_HAND).getItem() == Items.ACACIA_BOAT;
+//                //level.getBlockState(pos).getBlock() instanceof LeanToBlock;
+//        System.out.println(timeSinceMidday + ";" + isBed + ";" + isLeanTo);
+//        if(((timeSinceMidday < 0.25F || timeSinceMidday > 0.75F) && isLeanTo) || (timeSinceMidday > 0.25F && timeSinceMidday < 0.75F && isBed && !isLeanTo))
+//        {
+//            ret = Result.ALLOW;
+//        }
+//        event.setResult(ret);
+//	    Player player = event.getPlayer();
+//	    Player.BedSleepingProblem problem = event.getResultStatus();
+//	    System.out.println(problem);
+    }
+	
+	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
+    public static void onSleepTimeCheck(SleepingTimeCheckEvent event)
+    {
+	    event.setResult(Result.ALLOW);
+	    Player player = event.getPlayer();
+	    Level level = player.level;
+	    BlockPos pos = event.getSleepingLocation().get();
+	    float timeSinceMidday =  event.getPlayer().level.getTimeOfDay(1.0F);
+	    Result ret = Result.DENY;
+	    boolean isBed = level.getBlockState(pos).getBlock() instanceof BedBlock;
+	    boolean isLeanTo = player.getItemInHand(InteractionHand.MAIN_HAND).getItem() == Items.ACACIA_BOAT;
+	            //level.getBlockState(pos).getBlock() instanceof LeanToBlock;
+	    if(((timeSinceMidday < 0.25F || timeSinceMidday > 0.75F) && isLeanTo) || (timeSinceMidday > 0.25F && timeSinceMidday < 0.75F && isBed && !isLeanTo))
+	    {
+	        ret = Result.ALLOW;
+	    }
+        event.setResult(ret);
+    }
 	
 	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
 	public static void onBreakSpeed(BreakSpeed event)

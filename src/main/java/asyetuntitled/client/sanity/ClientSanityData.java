@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Random;
 
 import asyetuntitled.AsYetUntitled;
-import asyetuntitled.client.sound.FollowingSoundInstance;
 import asyetuntitled.client.util.ClientReflectionHelper;
 import asyetuntitled.client.util.ClientResourceLocations;
-import asyetuntitled.client.util.SoundsRegistry;
 import asyetuntitled.common.particle.ParticlesRegistry;
+import asyetuntitled.common.sound.FollowingSoundInstance;
+import asyetuntitled.common.sound.SoundsRegistry;
 import asyetuntitled.common.util.DarknessHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
@@ -151,7 +151,7 @@ public class ClientSanityData
 	    		phosphorModifier = 1.0F - getPlayerSanity() / 0.5F;
 	    	}
 	    	
-	    	phosphorModifier *= 0.7F;
+	    	phosphorModifier *= 0.5F;
 
 	    	float desaturate = Math.max(saturationModifier, 0.1F);
 			
@@ -163,7 +163,7 @@ public class ClientSanityData
 	    		}
 	    		else if(pass.getName().equals("phosphor"))
 	    		{
-	    			pass.getEffect().getUniform("Phosphor").getFloatBuffer().put(0, phosphorModifier*1.2F);
+	    			pass.getEffect().getUniform("Phosphor").getFloatBuffer().put(0, phosphorModifier*1.1F);
 	    			pass.getEffect().getUniform("Phosphor").getFloatBuffer().put(1, phosphorModifier);
 	    			pass.getEffect().getUniform("Phosphor").getFloatBuffer().put(2, phosphorModifier);
 	    		}

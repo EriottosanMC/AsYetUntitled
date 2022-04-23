@@ -7,7 +7,8 @@ v. 1.18.2-0.0.2.0 - Making it harder!
 - Steve has finally realised he doesn't have infinitely deep pockets. He will now need help carrying things
 - Added stumps. These can only be destroyed (in reasonable time) with an axe once the dirt has been removed beneath them
 - Trees are now stumped
--
+- Stopped reloading resource packs being a way of restoring colour to the world
+- Made the world less blurry for the insane
 
 -----------------------------------------------------------------------------------
 

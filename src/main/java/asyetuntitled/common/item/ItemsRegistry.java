@@ -43,9 +43,9 @@ public class ItemsRegistry
 
 	public static final RegistryObject<Item> GRASS_ITEM = ITEMS.register("grass", () -> new Item(new Item.Properties().tab(ITEM_GROUP)));
 
-	public static final RegistryObject<Item> GRASS_BUNDLE = ITEMS.register("grass_bundle", () -> new CustomBundleItem(ArmorMaterialInit.BACKPACK_SIMPLE, new Item.Properties().stacksTo(1).tab(ITEM_GROUP)));
-	
-	
+	public static final RegistryObject<Item> GRASS_BUNDLE_WEARABLE = ITEMS.register("grass_bundle_wearable", () -> new CustomBundleWearableItem(ArmorMaterialInit.BACKPACK_SIMPLE, new Item.Properties().stacksTo(1).tab(ITEM_GROUP)));
+	public static final RegistryObject<Item> GRASS_BUNDLE = ITEMS.register("grass_bundle", () -> new CustomBundleItem(new Item.Properties().stacksTo(1).tab(ITEM_GROUP), 2));
+
 	public static void registerItems(IEventBus bus) 
 	{
 		ITEMS.register(bus);

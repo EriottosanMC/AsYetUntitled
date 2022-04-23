@@ -16,4 +16,19 @@ public class CommonResourceLocations {
 	//Tags
 	public static ResourceLocation DIGGABLE_BY_HAND = new ResourceLocation(AsYetUntitled.MODID, "diggable_by_hand");
 
+	//Sounds (Sounds get passed from the server sometimes so need to be common)
+    public static ResourceLocation CHARLIE_MOOD = new ResourceLocation(AsYetUntitled.MODID, "charlie_mood");
+    public static ResourceLocation CHARLIE_SCARE = new ResourceLocation(AsYetUntitled.MODID, "charlie_scare");
+    public static ResourceLocation CHARLIE_ATTACK = new ResourceLocation(AsYetUntitled.MODID, "charlie_attack");
+    public static ResourceLocation OMINOUS_WHISPER = new ResourceLocation(AsYetUntitled.MODID, "ominous_whisper");
+
+    public static ResourceLocation SHADOW_SPIDER_AMBIENT = new ResourceLocation(AsYetUntitled.MODID, "shadow_spider_ambient");
+    public static ResourceLocation SHADOW_SPIDER_HURT = new ResourceLocation(AsYetUntitled.MODID, "shadow_spider_hurt");
+    public static ResourceLocation SHADOW_SPIDER_DEATH = new ResourceLocation(AsYetUntitled.MODID, "shadow_spider_death");
+    public static ResourceLocation SHADOW_SPIDER_STEP = new ResourceLocation(AsYetUntitled.MODID, "shadow_spider_step");
+    public static ResourceLocation SHADOW_CHICKEN_AMBIENT = new ResourceLocation(AsYetUntitled.MODID, "shadow_chicken_ambient");
+    public static ResourceLocation SHADOW_CHICKEN_HURT = new ResourceLocation(AsYetUntitled.MODID, "shadow_chicken_hurt");
+    public static ResourceLocation SHADOW_CHICKEN_DEATH = new ResourceLocation(AsYetUntitled.MODID, "shadow_chicken_death");
+    public static ResourceLocation SHADOW_CHICKEN_STEP = new ResourceLocation(AsYetUntitled.MODID, "shadow_chicken_step");
+
 }

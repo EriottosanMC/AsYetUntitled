@@ -1,16 +1,12 @@
 package asyetuntitled;
 
-import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
@@ -20,16 +16,14 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import asyetuntitled.client.screen.LivingChestScreen;
-import asyetuntitled.client.util.ClientReflectionHelper;
-import asyetuntitled.client.util.ClientResourceLocations;
-import asyetuntitled.client.util.SoundsRegistry;
+import asyetuntitled.client.event.ClientModEvents;
 import asyetuntitled.common.block.BlocksRegistry;
 import asyetuntitled.common.entity.EntityRegistry;
 import asyetuntitled.common.item.ItemsRegistry;
 import asyetuntitled.common.menu.MenusRegistry;
 import asyetuntitled.common.messages.MessagesRegistry;
 import asyetuntitled.common.particle.ParticlesRegistry;
+import asyetuntitled.common.sound.SoundsRegistry;
 import asyetuntitled.common.util.BlockChange;
 import asyetuntitled.common.util.CommonReflectionHelper;
 
@@ -53,7 +47,7 @@ public class AsYetUntitled
 		IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
 		// Register the setup methods for modloading
 		modBus.addListener(this::setupCommon);
-		modBus.addListener(this::setupClient);
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> modBus.addListener(ClientModEvents::init));
         // Register the enqueueIMC method for modloading. This allows us to send messages to other mods
         modBus.addListener(this::enqueueIMC);
         // Register the processIMC method for modloading. This allows us to receive messages from other mods
@@ -67,8 +61,9 @@ public class AsYetUntitled
         ItemsRegistry.registerItems(modBus);
         EntityRegistry.registerEntities(modBus);
         MenusRegistry.register(modBus);
-        SoundsRegistry.register(modBus);
-        ParticlesRegistry.register(modBus);
+        SoundsRegistry.register(modBus);    
+        ParticlesRegistry.register(modBus);    
+
     }
 
     // Common Setup Event.
@@ -83,27 +78,6 @@ public class AsYetUntitled
         
    }
     
-    private void setupClient(final FMLClientSetupEvent event)
-    {
-    	event.enqueueWork(() -> {
-        	ClientReflectionHelper.init();
-        	
-        	ItemBlockRenderTypes.setRenderLayer(BlocksRegistry.GRASSUSEFUL.get(), RenderType.cutoutMipped());
-        	ItemBlockRenderTypes.setRenderLayer(BlocksRegistry.TALLGRASSUSEFUL.get(), RenderType.cutoutMipped());
-        	MenuScreens.register(MenusRegistry.LIVING_CHEST_CONTAINER.get(), LivingChestScreen::new);           // Attach our container to the screen
-// 	            ItemBlockRenderTypes.setRenderLayer(Registration.POWERGEN.get(), RenderType.translucent()); // Set the render type for our power generator to translucent
- 		   ItemProperties.register(ItemsRegistry.DUMMY_RUNE.get(), ClientResourceLocations.ALPHABET, (stack, level, living, id) -> {
- 			   CompoundTag tag = stack.getOrCreateTag();
- 			   float f = 0.0F;
- 			   if(tag.contains("Alphabet"))
- 			   {
- 				   f = tag.getFloat("Alphabet");
- 			   }
- 			   return f;
- 		   });
- 	   });
-     }
-
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
         // some example code to dispatch IMC to another mod
@@ -125,7 +99,7 @@ public class AsYetUntitled
         // do something when the server starts
         LOGGER.info("HELLO from server starting");
     }
-
+    
     public static void logMessage(String s) 
     {
     	StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();

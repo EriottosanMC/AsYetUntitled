@@ -225,22 +225,22 @@ public class FeaturesRegistry
 		switch(name)
 		{
 			case "oak_log":
-				state = Blocks.OAK_PLANKS.defaultBlockState();
+				state = BlocksRegistry.OAK_STUMP.get().defaultBlockState();
 				break;
 			case "birch_log":
-				state = Blocks.BIRCH_PLANKS.defaultBlockState();
+				state = BlocksRegistry.BIRCH_STUMP.get().defaultBlockState();
 				break;
 			case "spruce_log":
-				state = Blocks.SPRUCE_PLANKS.defaultBlockState();
+				state = BlocksRegistry.SPRUCE_STUMP.get().defaultBlockState();
 				break;
 			case "jungle_log":
-				state = Blocks.JUNGLE_PLANKS.defaultBlockState();
+				state = BlocksRegistry.JUNGLE_STUMP.get().defaultBlockState();
 				break;
 			case "acacia_log":
-				state = Blocks.ACACIA_PLANKS.defaultBlockState();
+				state = BlocksRegistry.ACACIA_STUMP.get().defaultBlockState();
 				break;
 			case "dark_oak_log":
-				state = Blocks.DARK_OAK_PLANKS.defaultBlockState();
+				state = BlocksRegistry.DARK_OAK_STUMP.get().defaultBlockState();
 				break;
 		}
 		return state;

@@ -35,7 +35,7 @@ public class ClientboundPacketSyncPlayerDarkness
 			 // Here we are client side.
 			 // Be very careful not to access client-only classes here! (like Minecraft) because
 			 // this packet needs to be available server-side too
-			 ClientSanityData.setTarget(playerSanity, forceUpdate);
+		     ClientSanityData.setTarget(playerSanity, forceUpdate);
 		 });
 		 return true;
 	 }

@@ -1,9 +1,8 @@
 package asyetuntitled.common.entity;
 
-
-import asyetuntitled.client.util.SoundsRegistry;
 import asyetuntitled.common.messages.ClientboundPacketShadowSoundEntity;
 import asyetuntitled.common.messages.MessagesRegistry;
+import asyetuntitled.common.sound.SoundsRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;

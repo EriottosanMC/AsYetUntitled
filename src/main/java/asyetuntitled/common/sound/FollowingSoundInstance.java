@@ -1,4 +1,4 @@
-package asyetuntitled.client.sound;
+package asyetuntitled.common.sound;
 
 import net.minecraft.client.resources.sounds.AbstractTickableSoundInstance;
 import net.minecraft.client.resources.sounds.SoundInstance;

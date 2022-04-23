@@ -154,7 +154,7 @@ public class CapabilityEventsHandler {
 	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
 	public static void playerUpdateEvent(LivingUpdateEvent event)
 	{
-		if(event.getEntityLiving() instanceof Player player)
+		if(event.getEntityLiving() != null && event.getEntityLiving() instanceof Player player)
 		{
 			if(!player.level.isClientSide)
 			{
@@ -173,11 +173,11 @@ public class CapabilityEventsHandler {
 			}
 			else
 			{
-				ClientSanityData.tickSanity();
-				if(((ClientLevel) player.level).getSkyFlashTime() > 0)
-				{
-					MessagesRegistry.sendToServer(new ServerboundPacketSkyFlash());
-				}
+			    ClientSanityData.tickSanity();
+			    if(((ClientLevel) player.level).getSkyFlashTime() > 0)
+			    {
+			        MessagesRegistry.sendToServer(new ServerboundPacketSkyFlash());
+			    }
 			}
 		}
 		
@@ -309,46 +309,6 @@ public class CapabilityEventsHandler {
 		}
 	}
 	
-	
-	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
-	public static void livingUpdateEvent(LivingUpdateEvent event)
-	{
-		if(event.getEntityLiving() != null)
-		{
-			if(event.getEntityLiving() instanceof Player player)
-			{
-				 if(DarknessHelper.isTrueDarkness(player.level, player.blockPosition()))
-				{
-					if(!player.level.isClientSide)
-					{
-						player.getCapability(PlayerDarknessProvider.PLAYER_DARKNESS).ifPresent(cap -> {
-							cap.increaseDarkness(player);
-						});
-					}
-				}
-				else
-				{
-					 if(!player.level.isClientSide)
-					 {
-						 player.getCapability(PlayerDarknessProvider.PLAYER_DARKNESS).ifPresent(cap -> {
-							cap.resetDarkness(player);
-						});
-					 }
-				}
-				 
-				if(!player.level.isClientSide)
-				{
-					player.getCapability(PlayerSanityProvider.PLAYER_SANITY).ifPresent(cap -> {
-					});
-				}
-				else
-				{
-					ClientSanityData.tickSanity();
-				}
-				
-			}
-		}
-	}
 	
 	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
 	public static void onEvent(ItemPickupEvent event)
