@@ -1,3 +1,4 @@
+package asyetuntitled.common.test;
 //package asyetuntitled.common.test;
 //
 //import net.minecraftforge.common.ForgeConfigSpec;

@@ -12,10 +12,7 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class ClientCustomBundleTooltip implements ClientTooltipComponent {
     public static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation("textures/gui/container/bundle.png");
     private final NonNullList<ItemStack> items;
@@ -100,7 +97,6 @@ public class ClientCustomBundleTooltip implements ClientTooltipComponent {
        return (int) Math.ceil((float) this.size / this.gridSizeX());
     }
 
-    @OnlyIn(Dist.CLIENT)
     static enum Texture {
        SLOT(0, 0, 18, 20),
        BLOCKED_SLOT(0, 40, 18, 20),

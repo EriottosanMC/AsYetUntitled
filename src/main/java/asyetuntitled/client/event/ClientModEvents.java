@@ -86,7 +86,6 @@ public class ClientModEvents {
 	@SubscribeEvent
 	public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event)
 	{
-        System.out.println("I am sailing");
         event.registerLayerDefinition(ClientResourceLocations.BACKPACK_MODEL_LAYER, BackpackModel::createBodyLayer);
 		event.registerLayerDefinition(ClientResourceLocations.LIVING_CHEST_MODEL_LAYER, LivingChestModel::createBodyLayer);
 		event.registerLayerDefinition(ClientResourceLocations.STAFF_MODEL_LAYER, StaffModel::createBodyLayer);

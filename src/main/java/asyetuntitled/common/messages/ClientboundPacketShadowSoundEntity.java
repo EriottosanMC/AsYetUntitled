@@ -47,7 +47,7 @@ public class ClientboundPacketShadowSoundEntity {
 		this.sanityThreshold = buf.readFloat();
 	}
 
-	public void write(FriendlyByteBuf buf) {
+	public void toBytes(FriendlyByteBuf buf) {
 	    buf.writeRegistryId(this.sound);
 	    buf.writeEnum(this.source);
 		buf.writeInt(this.x);

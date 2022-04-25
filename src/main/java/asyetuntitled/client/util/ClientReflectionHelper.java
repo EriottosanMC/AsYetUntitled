@@ -9,11 +9,8 @@ import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.PostChain;
 import net.minecraft.client.renderer.PostPass;
 import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 
-@OnlyIn(Dist.CLIENT)
 public class ClientReflectionHelper 
 {
 	private static Field updateLightTextureField;

@@ -2,8 +2,11 @@ package asyetuntitled.client.render.blockentity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
+
+import asyetuntitled.client.util.ClientPlayerSpawnPoints;
 import asyetuntitled.common.block.BlocksRegistry;
 import asyetuntitled.common.block.entity.TouchStoneBE;
+import asyetuntitled.common.player.spawn.SpawnPoint;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -14,11 +17,8 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.model.data.EmptyModelData;
 
-@OnlyIn(Dist.CLIENT)
 public class TouchStoneBER implements BlockEntityRenderer<TouchStoneBE>
 {
 	private final BlockEntityRendererProvider.Context context;
@@ -46,7 +46,7 @@ public class TouchStoneBER implements BlockEntityRenderer<TouchStoneBE>
 		//Gets the rune for render and enchants if the player can spawn at this touchstone
 		final ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
 		final ItemStack rune = touchstone.getRune();
-		if(touchstone.hasPlayerTouched(player)) 
+		if(ClientPlayerSpawnPoints.isSpawnPoint(new SpawnPoint(touchstone.getBlockPos(), touchstone.getLevel().dimension()))) 
 		{
 			rune.enchant(Enchantments.ALL_DAMAGE_PROTECTION, 1);
 		}

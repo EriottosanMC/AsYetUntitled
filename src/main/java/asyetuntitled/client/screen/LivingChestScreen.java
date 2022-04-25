@@ -8,10 +8,7 @@ import asyetuntitled.common.container.LivingChestContainer;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class LivingChestScreen extends AbstractContainerScreen<LivingChestContainer>
 {
     public LivingChestScreen(LivingChestContainer container, Inventory inv, Component name)

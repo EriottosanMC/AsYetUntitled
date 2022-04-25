@@ -8,6 +8,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.BufferUploader;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.math.Vector3f;
@@ -17,6 +18,7 @@ import asyetuntitled.client.sanity.ClientSanityData;
 import asyetuntitled.client.util.ClientReflectionHelper;
 import asyetuntitled.client.util.RendererChanger;
 import asyetuntitled.common.item.ItemBackpack;
+import asyetuntitled.common.messages.ClientThoughtsData;
 import asyetuntitled.client.util.ClientResourceLocations;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
@@ -24,6 +26,7 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.texture.DynamicTexture;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -86,6 +89,10 @@ public class ClientRenderEventsHandler {
 		if(event.getType() == RenderGameOverlayEvent.ElementType.ALL)
 		{
 			renderSanity(event.getWindow());
+			if(ClientThoughtsData.displayTime > 0)
+			{
+		         renderThoughts(event.getWindow(), event.getMatrixStack());
+			}
 		}
 	}
 	
@@ -99,6 +106,7 @@ public class ClientRenderEventsHandler {
 		p_115153_.end();
 		BufferUploader.end(p_115153_);
    }
+	
 	//Renders the sanity aspects
 	private static void renderSanity(Window window)
 	{
@@ -242,7 +250,30 @@ public class ClientRenderEventsHandler {
 		}	
 	}	
 	
-	
+	//Renders thoughts
+    private static void renderThoughts(Window window, PoseStack stack)
+    {
+        Minecraft mc = Minecraft.getInstance();
+        List<TranslatableComponent> messages = ClientThoughtsData.getMessageSplit();
+        float f = ClientThoughtsData.displayTime > 10 ? 1.0F : ClientThoughtsData.displayTime / 10F;
+      
+        for(int i = 0 ; i < messages.size() ; i++)
+        {
+            TranslatableComponent message = messages.get(i);
+            float width = mc.font.width(message.getVisualOrderText()) / 2;
+            int mid = window.getGuiScaledWidth() / 2;
+            int alpha = Math.round(f * 255);
+            
+            stack.pushPose();
+            stack.translate(0.0D, 0.0D, 50.0D);
+            RenderSystem.enableBlend();
+            mc.font.drawShadow(stack, message, mid - width, 40 + 10*i, 16777215 + (alpha << 24));
+            RenderSystem.disableBlend();
+            stack.popPose();    
+        }
+        ClientThoughtsData.displayTime--;
+    }
+    
 	@SubscribeEvent
 	public static void renderOverlay(RenderGameOverlayEvent event) 
 	{

@@ -12,10 +12,7 @@ import net.minecraft.client.model.ListModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class BackpackModel extends ListModel<EntityBackpack> {
 	
 	private final Pair<ImmutableList<ModelPart>, ImmutableList<ModelPart>> modelParts;

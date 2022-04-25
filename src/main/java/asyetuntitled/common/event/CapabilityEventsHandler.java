@@ -14,6 +14,7 @@ import asyetuntitled.common.messages.ServerboundPacketSkyFlash;
 import asyetuntitled.common.util.CommonResourceLocations;
 import asyetuntitled.common.util.DarknessHelper;
 import asyetuntitled.common.util.capability.LevelChestProvider;
+import asyetuntitled.common.util.capability.LevelSpawnsProvider;
 import asyetuntitled.common.util.capability.PlayerDarknessProvider;
 import asyetuntitled.common.util.capability.PlayerSanityProvider;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -231,10 +232,15 @@ public class CapabilityEventsHandler {
 		Level level = event.getObject();
 		if(!level.isClientSide)
 		{
-			if(!event.getObject().getCapability(LevelChestProvider.LEVEL_CHESTS).isPresent())
+			if(!level.getCapability(LevelChestProvider.LEVEL_CHESTS).isPresent())
 			{
 				event.addCapability(CommonResourceLocations.LEVEL_CHEST_CAPABILITY, new LevelChestProvider());
 			}
+			
+			if(level.dimension() == Level.OVERWORLD && !level.getCapability(LevelSpawnsProvider.LEVEL_SPAWNS).isPresent())
+            {
+                event.addCapability(CommonResourceLocations.LEVEL_SPAWNS_CAPABILITY, new LevelSpawnsProvider());
+            }
 		}
 	}
 	
@@ -245,11 +251,11 @@ public class CapabilityEventsHandler {
 		{
 			if(!event.getObject().getCapability(PlayerDarknessProvider.PLAYER_DARKNESS).isPresent())
 			{
-				event.addCapability(CommonResourceLocations.DARKNESS_CAPABILITY, new PlayerDarknessProvider());
+				event.addCapability(CommonResourceLocations.PLAYER_DARKNESS_CAPABILITY, new PlayerDarknessProvider());
 			}
 			if(!event.getObject().getCapability(PlayerSanityProvider.PLAYER_SANITY).isPresent())
 			{
-				event.addCapability(CommonResourceLocations.SANITY_CAPABILITY, new PlayerSanityProvider());
+				event.addCapability(CommonResourceLocations.PLAYER_SANITY_CAPABILITY, new PlayerSanityProvider());
 			}
 		}
 	}

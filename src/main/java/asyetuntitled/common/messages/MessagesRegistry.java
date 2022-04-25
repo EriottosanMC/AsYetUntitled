@@ -51,9 +51,21 @@ public class MessagesRegistry
         
         net.messageBuilder(ClientboundPacketShadowSoundEntity.class, id(), NetworkDirection.PLAY_TO_CLIENT)
         	.decoder(ClientboundPacketShadowSoundEntity::new)
-        	.encoder(ClientboundPacketShadowSoundEntity::write)
+        	.encoder(ClientboundPacketShadowSoundEntity::toBytes)
         	.consumer(ClientboundPacketShadowSoundEntity::handle)
         	.add();
+        
+        net.messageBuilder(ClientboundPacketThoughts.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+            .decoder(ClientboundPacketThoughts::new)
+            .encoder(ClientboundPacketThoughts::toBytes)
+            .consumer(ClientboundPacketThoughts::handle)
+            .add();
+        
+        net.messageBuilder(ClientboundPacketSpawnpoint.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+        .decoder(ClientboundPacketSpawnpoint::new)
+        .encoder(ClientboundPacketSpawnpoint::toBytes)
+        .consumer(ClientboundPacketSpawnpoint::handle)
+        .add();
     }
 
     public static <MSG> void sendToServer(MSG message) {
@@ -63,4 +75,10 @@ public class MessagesRegistry
     public static <MSG> void sendToPlayer(MSG message, ServerPlayer player) {
         INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), message);
     }
+    
+    public static <MSG> void sentToAllPlayers(MSG message)
+    {
+        INSTANCE.send(PacketDistributor.ALL.noArg(), message);
+    }
+
 }

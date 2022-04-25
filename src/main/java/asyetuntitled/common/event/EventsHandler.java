@@ -7,15 +7,13 @@ import asyetuntitled.common.block.ModTags;
 import asyetuntitled.common.entity.backpack.EntityBackpack;
 import asyetuntitled.common.item.ItemBackpack;
 import asyetuntitled.common.item.ItemsRegistry;
+import asyetuntitled.common.util.capability.LevelSpawnsProvider;
 import asyetuntitled.common.util.capability.PlayerSanityProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.PlayerRespawnLogic;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Mth;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
@@ -31,12 +29,9 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -61,6 +56,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.server.ServerLifecycleHooks;
 
 @Mod.EventBusSubscriber(modid = AsYetUntitled.MODID, bus = Bus.FORGE)
 public class EventsHandler {
@@ -97,7 +93,6 @@ public class EventsHandler {
 	        player.getCapability(PlayerSanityProvider.PLAYER_SANITY).ifPresent(sanity -> {
 	           sanity.changeSanity(player, 1000); 
 	        });
-	        System.out.println("hello");
 	    });
     }
 	
@@ -159,6 +154,15 @@ public class EventsHandler {
 	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
 	public static void onEvent(PlayerRespawnEvent event)
 	{
+	    
+//        if(event.getPlayer() instanceof ServerPlayer player)
+//        {
+//            System.out.println("1");
+//            ServerLifecycleHooks.getCurrentServer().getLevel(Level.OVERWORLD).getCapability(LevelSpawnsProvider.LEVEL_SPAWNS).ifPresent(spawns -> {
+//                   System.out.println("2");
+//                   spawns.respawn(player);
+//            });
+//        }
 //		Player player = event.getPlayer();
 //		if(player instanceof ServerPlayer serverPlayer)
 //		{
@@ -276,6 +280,15 @@ public class EventsHandler {
 						}
 					}
 				}
+				
+		        if(player instanceof ServerPlayer sPlayer)
+		        {
+		            System.out.println("1");
+		            ServerLifecycleHooks.getCurrentServer().getLevel(Level.OVERWORLD).getCapability(LevelSpawnsProvider.LEVEL_SPAWNS).ifPresent(spawns -> {
+		                System.out.println("2");
+		                spawns.respawn(sPlayer);
+		            });
+		        }
 			}
 		}
 	}
@@ -327,58 +340,8 @@ public class EventsHandler {
 						player.inventoryMenu.getSlot(i).set(ItemStack.EMPTY);
 					}
 				}
-				
-				if(player instanceof ServerPlayer serverPlayer)
-				{
-					MinecraftServer server = serverPlayer.server;
-					ServerLevel level = server.getLevel(serverPlayer.getRespawnDimension());
-					BlockPos pos = getSpawn(level);
-					while(pos == null)
-					{
-						pos = getSpawn(level);
-					}
-					serverPlayer.setRespawnPosition(level.dimension(), pos, 0, true, false);
-				}
-				
 			}
-			
 		}
-	}
-	
-	private static BlockPos getSpawn(ServerLevel level)
-	{
-        ChunkGenerator chunkgenerator = level.getChunkSource().getGenerator();
-//		ChunkPos chunkpos = new ChunkPos(chunkgenerator.climateSampler().findSpawnPosition());
-		ChunkPos chunkpos = new ChunkPos(level.random.nextInt(100) - 50, level.random.nextInt(100) - 50);
-		int i = chunkgenerator.getSpawnHeight(level);
-		if (i < level.getMinBuildHeight()) {
-			BlockPos blockpos = chunkpos.getWorldPosition();
-			i = level.getHeight(Heightmap.Types.WORLD_SURFACE, blockpos.getX() + 8, blockpos.getZ() + 8);
-		}
-
-		int k1 = 0;
-		int j = 0;
-		int k = 0;
-		int l = -1;
-
-         for(int j1 = 0; j1 < Mth.square(11); ++j1) {
-            if (k1 >= -5 && k1 <= 5 && j >= -5 && j <= 5) {
-               BlockPos blockpos1 = PlayerRespawnLogic.getSpawnPosInChunk(level, new ChunkPos(chunkpos.x + k1, chunkpos.z + j));
-               if (blockpos1 != null) {
-                  return blockpos1;
-               }
-            }
-
-            if (k1 == j || k1 < 0 && k1 == -j || k1 > 0 && k1 == 1 - j) {
-               int l1 = k;
-               k = -l;
-               l = l1;
-            }
-
-            k1 += k;
-            j += l;
-         }
-         return null;
 	}
 	
 	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)

@@ -3,10 +3,7 @@ package asyetuntitled.client.render.model;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.world.entity.PathfinderMob;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class ShadowCreatureModel<T extends PathfinderMob> extends HierarchicalModel<T> {
 	
 	public ShadowCreatureModel(ModelPart part) {}

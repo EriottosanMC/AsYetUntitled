@@ -1,3 +1,4 @@
+package asyetuntitled.net.minecraft.world.level.levelgen;
 //package asyetuntitled.net.minecraft.world.level.levelgen;
 //
 //import java.util.HashMap;

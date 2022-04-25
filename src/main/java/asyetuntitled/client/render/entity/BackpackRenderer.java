@@ -17,10 +17,7 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class BackpackRenderer extends EntityRenderer<EntityBackpack>
 {
 	private final Map<EntityBackpack.Type, Pair<ResourceLocation, BackpackModel>> backpackResources;

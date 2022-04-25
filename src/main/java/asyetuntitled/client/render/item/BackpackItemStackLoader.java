@@ -7,11 +7,8 @@ import com.google.gson.JsonObject;
 
 import asyetuntitled.client.render.model.ItemBackpackModel;
 import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.model.IModelLoader;
 
-@OnlyIn(Dist.CLIENT)
 public enum BackpackItemStackLoader implements IModelLoader<ItemBackpackModel> 
 {
 	INSTANCE;

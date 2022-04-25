@@ -12,10 +12,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class WearableBackpackModel extends AgeableListModel<LivingEntity> {
 	
 	private static Pair<ImmutableList<ModelPart>, ImmutableList<ModelPart>> modelParts;

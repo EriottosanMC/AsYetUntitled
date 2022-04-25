@@ -6,6 +6,7 @@ import asyetuntitled.common.entity.ShadowChicken;
 import asyetuntitled.common.entity.ShadowSpider;
 import asyetuntitled.common.entity.livingchest.LivingChest;
 import asyetuntitled.common.util.capability.LevelChests;
+import asyetuntitled.common.util.capability.LevelSpawns;
 import asyetuntitled.common.util.capability.PlayerDarkness;
 import asyetuntitled.common.util.capability.PlayerSanity;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
@@ -29,6 +30,7 @@ public class ModEventsHandler {
 	public static void registerCaps(RegisterCapabilitiesEvent event)
 	{
 		event.register(LevelChests.class);
+		event.register(LevelSpawns.class);
 		event.register(PlayerDarkness.class);
 		event.register(PlayerSanity.class);
 	}

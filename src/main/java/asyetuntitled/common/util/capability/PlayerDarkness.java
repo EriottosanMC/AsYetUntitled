@@ -1,10 +1,13 @@
 package asyetuntitled.common.util.capability;
 
 import asyetuntitled.AsYetUntitled;
+import asyetuntitled.common.messages.ClientboundPacketThoughts;
+import asyetuntitled.common.messages.MessagesRegistry;
 import asyetuntitled.common.sound.SoundsRegistry;
-import net.minecraft.Util;
+import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -36,18 +39,20 @@ public class PlayerDarkness
 			SoundEvent s = SoundsRegistry.CHARLIE_ATTACK.get();
 			player.playNotifySound(s, SoundSource.HOSTILE, 2F, player.getRandom().nextFloat(0.3F)+0.7F);
 			player.hurt(this.CHARLIE, 8.0F);
-			player.sendMessage(new TranslatableComponent("asyetuntitled.charlie.attack.message" + (1+player.level.random.nextInt(6))), Util.NIL_UUID);
+            MessagesRegistry.sendToPlayer(new ClientboundPacketThoughts((TranslatableComponent) new TranslatableComponent("asyetuntitled.charlie.attack.message" + (1+player.level.random.nextInt(6))).withStyle(ChatFormatting.DARK_RED)), (ServerPlayer) player);
 		}
 		this.darknessTicks++;
 		
 		if(this.darknessTicks == 100)
 		{
-			player.sendMessage(new TranslatableComponent("asyetuntitled.charlie.scare.message" + (1+player.level.random.nextInt(15))), Util.NIL_UUID);
+            MessagesRegistry.sendToPlayer(new ClientboundPacketThoughts((TranslatableComponent) new TranslatableComponent("asyetuntitled.charlie.scare.message" + (1+player.level.random.nextInt(15))).withStyle(ChatFormatting.RED)), (ServerPlayer) player);
 		}
 		if(!alreadyDark)
 		{
+		    TranslatableComponent message = new TranslatableComponent("asyetuntitled.darkness.enter.message" + (1+player.level.random.nextInt(12)));
+		    System.out.println(message.getString());
 		    alreadyDark = true;
-		    player.sendMessage(new TranslatableComponent("asyetuntitled.darkness.enter.message" + (1+player.level.random.nextInt(12))), Util.NIL_UUID);
+	          MessagesRegistry.sendToPlayer(new ClientboundPacketThoughts((TranslatableComponent) new TranslatableComponent("asyetuntitled.darkness.enter.message" + (1+player.level.random.nextInt(12))).withStyle(ChatFormatting.YELLOW)), (ServerPlayer) player);
 		}
 	}
 	
@@ -56,7 +61,7 @@ public class PlayerDarkness
 		if(this.darknessTicks != 0)
 		{
 			this.darknessTicks = 0;
-            player.sendMessage(new TranslatableComponent("asyetuntitled.darkness.gone.message" + (1+player.level.random.nextInt(10))), Util.NIL_UUID);
+			MessagesRegistry.sendToPlayer(new ClientboundPacketThoughts((TranslatableComponent) new TranslatableComponent("asyetuntitled.darkness.gone.message" + (1+player.level.random.nextInt(10))).withStyle(ChatFormatting.GOLD)), (ServerPlayer) player);
 			alreadyDark = false;
 		}
 	}

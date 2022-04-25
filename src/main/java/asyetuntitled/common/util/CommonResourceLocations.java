@@ -7,8 +7,9 @@ public class CommonResourceLocations {
 
 	//Capabilities
 	public static ResourceLocation LEVEL_CHEST_CAPABILITY = new ResourceLocation(AsYetUntitled.MODID, "levelchests");
-	public static ResourceLocation DARKNESS_CAPABILITY = new ResourceLocation(AsYetUntitled.MODID, "playerdarkness");
-	public static ResourceLocation SANITY_CAPABILITY = new ResourceLocation(AsYetUntitled.MODID, "playersanity");
+	public static ResourceLocation LEVEL_SPAWNS_CAPABILITY = new ResourceLocation(AsYetUntitled.MODID, "levelspawns");
+	public static ResourceLocation PLAYER_DARKNESS_CAPABILITY = new ResourceLocation(AsYetUntitled.MODID, "playerdarkness");
+	public static ResourceLocation PLAYER_SANITY_CAPABILITY = new ResourceLocation(AsYetUntitled.MODID, "playersanity");
 	
 	//Messages
 	public static ResourceLocation MESSAGES = new ResourceLocation(AsYetUntitled.MODID, "messages");

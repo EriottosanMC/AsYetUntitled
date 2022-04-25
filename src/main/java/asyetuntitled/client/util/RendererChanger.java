@@ -9,10 +9,7 @@ import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class RendererChanger 
 {
 	//0-3 = noon-midnight, 4 = lightning

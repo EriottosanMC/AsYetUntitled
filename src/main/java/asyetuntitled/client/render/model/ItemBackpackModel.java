@@ -25,14 +25,11 @@ import net.minecraft.client.resources.model.UnbakedModel;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.model.IModelConfiguration;
 import net.minecraftforge.client.model.data.IDynamicBakedModel;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.geometry.IModelGeometry;
 
-@OnlyIn(Dist.CLIENT)
 public class ItemBackpackModel implements IModelGeometry<ItemBackpackModel>
 {
 	private final Transformation THIRD_PERSON_HAND = new Transformation(new Vector3f(0, -2 / 16F, -4.5F / 16f),

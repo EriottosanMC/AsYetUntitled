@@ -11,10 +11,7 @@ import net.minecraft.client.particle.TextureSheetParticle;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
 public class SpookyEyesParticle extends TextureSheetParticle
 {
 
@@ -58,7 +55,6 @@ public class SpookyEyesParticle extends TextureSheetParticle
 		}
 	}
 	
-	@OnlyIn(Dist.CLIENT)
 	public static class Provider implements ParticleProvider<SimpleParticleType>
 	{
 		private final SpriteSet sprites;
