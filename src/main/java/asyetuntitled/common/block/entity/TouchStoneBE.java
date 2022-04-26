@@ -23,7 +23,7 @@ public class TouchStoneBE extends BlockEntity
 {
 	private final List<UUID> playerList = Lists.newArrayList();
 	private final NonNullList<ItemStack> rune = NonNullList.withSize(1, new ItemStack(ItemsRegistry.DUMMY_RUNE.get()));
-
+	
     public TouchStoneBE(BlockPos pos, BlockState state)
     {
         super(BlocksRegistry.TOUCHSTONEBE.get(), pos, state);
@@ -72,6 +72,7 @@ public class TouchStoneBE extends BlockEntity
 // Called by the block ticker
     public void tickServer() 
     {
+        if(!level.isClientSide && !this.getRune().getOrCreateTag().contains("Alphabet")) this.changeRune(this.level.random.nextFloat());
     }
 
     

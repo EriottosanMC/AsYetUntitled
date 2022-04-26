@@ -46,6 +46,12 @@ public class ItemsRegistry
 	public static final RegistryObject<Item> GRASS_BUNDLE_WEARABLE = ITEMS.register("grass_bundle_wearable", () -> new CustomBundleWearableItem(ArmorMaterialInit.BACKPACK_SIMPLE, new Item.Properties().stacksTo(1).tab(ITEM_GROUP)));
 	public static final RegistryObject<Item> GRASS_BUNDLE = ITEMS.register("grass_bundle", () -> new CustomBundleItem(new Item.Properties().stacksTo(1).tab(ITEM_GROUP), 2));
 
+	public static final RegistryObject<BlockItem> COLUMN0 = ITEMS.register("column0", () -> new BlockItem(BlocksRegistry.TOUCHSTONE_COLUMN0.get(), new Item.Properties().tab(ITEM_GROUP)));
+	public static final RegistryObject<BlockItem> COLUMN1 = ITEMS.register("column1", () -> new BlockItem(BlocksRegistry.TOUCHSTONE_COLUMN1.get(), new Item.Properties().tab(ITEM_GROUP)));
+	public static final RegistryObject<BlockItem> COLUMN2 = ITEMS.register("column2", () -> new BlockItem(BlocksRegistry.TOUCHSTONE_COLUMN2.get(), new Item.Properties().tab(ITEM_GROUP)));
+
+	   public static final RegistryObject<BlockItem> CORNER = ITEMS.register("corner", () -> new BlockItem(BlocksRegistry.TOUCHSTONE_CORNER.get(), new Item.Properties().tab(ITEM_GROUP)));
+
 	public static void registerItems(IEventBus bus) 
 	{
 		ITEMS.register(bus);

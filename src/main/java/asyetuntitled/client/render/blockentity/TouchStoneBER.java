@@ -42,7 +42,6 @@ public class TouchStoneBER implements BlockEntityRenderer<TouchStoneBE>
 		dispatcher.renderSingleBlock(BlocksRegistry.TOUCHSTONE_BASE.get().defaultBlockState(), stack, buffer, combinedOverlay, packedLight, EmptyModelData.INSTANCE);
 		stack.popPose();
 		
-		
 		//Gets the rune for render and enchants if the player can spawn at this touchstone
 		final ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
 		final ItemStack rune = touchstone.getRune();

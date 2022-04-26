@@ -1,0 +1,10 @@
+{
+  "parent": "asyetuntitled:block/rotated_slab",
+  "textures": {
+    "bottom": "asyetuntitled:block/touchstone",
+    "top": "asyetuntitled:block/touchstone",
+    "side": "asyetuntitled:block/touchstone_side"
+  }
+}
+
+            

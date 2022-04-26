@@ -116,7 +116,8 @@ public class ClientModEvents {
 		});
 
 		event.registerBlockEntityRenderer(BlocksRegistry.TOUCHSTONEBE.get(), TouchStoneBER::new);
-		
+		event.registerBlockEntityRenderer(BlocksRegistry.TOUCHSTONECORNERBE.get(), TouchStoneCornerBER::new);
+
 	}
 	
 	

@@ -1,0 +1,6 @@
+{
+  "parent": "asyetuntitled:block/template/column_base1",
+  "textures": {
+    "wall": "minecraft:block/cobblestone"
+  }
+}

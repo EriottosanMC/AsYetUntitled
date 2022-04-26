@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-import asyetuntitled.common.block.BlockTouchStone;
+import asyetuntitled.common.block.TouchStoneBlock;
 import asyetuntitled.common.messages.ClientboundPacketSpawnpoint;
 import asyetuntitled.common.messages.MessagesRegistry;
 import asyetuntitled.common.player.spawn.SpawnPoint;
@@ -99,7 +99,7 @@ public class LevelSpawns
         else
         {
             SpawnPoint point = points.get(serverPlayer.level.random.nextInt(points.size()));
-            Optional<Vec3> optional = BlockTouchStone.findStandUpPosition(serverPlayer.getType(), serverPlayer.level, point.getBlockPos());
+            Optional<Vec3> optional = TouchStoneBlock.findStandUpPosition(serverPlayer.getType(), serverPlayer.level, point.getBlockPos());
             if(optional.isPresent())
             {
                 return new SpawnPoint(new BlockPos(optional.get()), point.getDimension());

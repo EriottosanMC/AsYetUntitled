@@ -24,7 +24,7 @@ public class BlocksRegistry
 	 
 	public static final BlockBehaviour.Properties BLOCK_PROPERTIES = BlockBehaviour.Properties.of(Material.STONE).strength(2f).requiresCorrectToolForDrops().speedFactor(0.8F);
 	
-	public static final RegistryObject<BlockTouchStone> TOUCHSTONE = BLOCKS.register("touchstone", () -> new BlockTouchStone());
+	public static final RegistryObject<TouchStoneBlock> TOUCHSTONE = BLOCKS.register("touchstone", () -> new TouchStoneBlock());
 	public static final RegistryObject<SlabBlock> TOUCHSTONE_BASE = BLOCKS.register("touchstone_base", () -> new SlabBlock(BlockBehaviour.Properties.of(Material.STONE)));
 	public static final RegistryObject<BlockEntityType<TouchStoneBE>> TOUCHSTONEBE = BLOCK_ENTITIES.register("touchstone_be", () -> BlockEntityType.Builder.of(TouchStoneBE::new, TOUCHSTONE.get()).build(null));
 	
@@ -38,7 +38,13 @@ public class BlocksRegistry
     public static final RegistryObject<Block> ACACIA_STUMP = BLOCKS.register("acacia_stump", () -> new StumpBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.2F, 0.0F).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
     public static final RegistryObject<Block> DARK_OAK_STUMP = BLOCKS.register("dark_oak_stump", () -> new StumpBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.2F, 0.0F).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
 
-	
+	public static final RegistryObject<Block> TOUCHSTONE_COLUMN0 = BLOCKS.register("touchstone_column0", () -> new ColumnBlock(BlockBehaviour.Properties.of(Material.STONE).strength(2.0F, 2.0F), 0));
+    public static final RegistryObject<Block> TOUCHSTONE_COLUMN1 = BLOCKS.register("touchstone_column1", () -> new ColumnBlock(BlockBehaviour.Properties.of(Material.STONE).strength(2.0F, 2.0F), 1));
+    public static final RegistryObject<Block> TOUCHSTONE_COLUMN2 = BLOCKS.register("touchstone_column2", () -> new ColumnBlock(BlockBehaviour.Properties.of(Material.STONE).strength(2.0F, 2.0F), 2));
+
+    public static final RegistryObject<Block> TOUCHSTONE_CORNER = BLOCKS.register("touchstone_corner", () -> new CornerBlock(BlockBehaviour.Properties.of(Material.STONE).strength(2.0F, 2.0F)));
+    public static final RegistryObject<BlockEntityType<TouchStoneCornerBE>> TOUCHSTONECORNERBE = BLOCK_ENTITIES.register("touchstonecorner_be", () -> BlockEntityType.Builder.of(TouchStoneCornerBE::new, TOUCHSTONE_CORNER.get()).build(null));
+
 //	private static ResourceLocation fastestTagID = new ResourceLocation(UMM.MODID, "fastest");
 //	public static Tag<Block> fastestTag = BlockTags.getAllTags().getTagOrEmpty(fastestTagID);
 //	private static ResourceLocation fastTagID = new ResourceLocation(UMM.MODID, "fast");

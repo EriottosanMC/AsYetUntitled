@@ -6,8 +6,11 @@ import net.minecraft.resources.ResourceLocation;
 
 public class ClientResourceLocations 
 {
+    //TEST
+    public static final ResourceLocation DARKBLOCK = new ResourceLocation(AsYetUntitled.MODID, "textures/block/touchstone.png");
 
-	//Sanity Textures
+
+    //Sanity Textures
 	public static ResourceLocation SANE = new ResourceLocation(AsYetUntitled.MODID, "textures/effect/sane.png");
 	public static ResourceLocation MIDSANE = new ResourceLocation(AsYetUntitled.MODID, "textures/effect/midsane.png");
 	public static ResourceLocation INSANE = new ResourceLocation(AsYetUntitled.MODID, "textures/effect/insane.png");
