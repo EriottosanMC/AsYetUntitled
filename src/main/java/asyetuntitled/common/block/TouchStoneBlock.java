@@ -39,7 +39,7 @@ import net.minecraftforge.server.ServerLifecycleHooks;
 
 public class TouchStoneBlock extends Block implements EntityBlock 
 {
-    private static final ImmutableList<Vec3i> RESPAWN_HORIZONTAL_OFFSETS = ImmutableList.of(new Vec3i(0, 0, -1), new Vec3i(-1, 0, 0), new Vec3i(0, 0, 1), new Vec3i(1, 0, 0), new Vec3i(-1, 0, -1), new Vec3i(1, 0, -1), new Vec3i(-1, 0, 1), new Vec3i(1, 0, 1));
+    private static final ImmutableList<Vec3i> RESPAWN_HORIZONTAL_OFFSETS = ImmutableList.of(new Vec3i(-1, 0, -2), new Vec3i(0, 0, -2), new Vec3i(1, 0, -2), new Vec3i(-2, 0, -1), new Vec3i(-2, 0, 0), new Vec3i(-2, 0, 1), new Vec3i(-1, 0, 2), new Vec3i(0, 0, 2), new Vec3i(1, 0, 2), new Vec3i(2, 0, -1), new Vec3i(2, 0, 0), new Vec3i(2, 0, 1));
     private static final ImmutableList<Vec3i> RESPAWN_OFFSETS = (new Builder<Vec3i>()).addAll(RESPAWN_HORIZONTAL_OFFSETS).addAll(RESPAWN_HORIZONTAL_OFFSETS.stream().map(Vec3i::below).iterator()).addAll(RESPAWN_HORIZONTAL_OFFSETS.stream().map(Vec3i::above).iterator()).add(new Vec3i(0, 1, 0)).build();
 
     public TouchStoneBlock() {
@@ -56,7 +56,7 @@ public class TouchStoneBlock extends Block implements EntityBlock
     {
     	 TouchStoneBE touchstone = (TouchStoneBE)level.getBlockEntity(p_49848_);
     	 ItemStack rune = touchstone.getRune();
-    	 if(!level.isClientSide && !rune.getOrCreateTag().contains("Alphabet")) touchstone.changeRune(this.RANDOM.nextFloat());
+    	 if(!level.isClientSide && !rune.getOrCreateTag().contains("alphabet")) touchstone.changeRune(this.RANDOM.nextFloat());
     }
    
 	@Override
@@ -83,11 +83,6 @@ public class TouchStoneBlock extends Block implements EntityBlock
 		return RenderShape.ENTITYBLOCK_ANIMATED;
 	}
 
-//    @Override
-//    public void appendHoverText(ItemStack stack, @javax.annotation.Nullable BlockGetter reader, List<Component> list, TooltipFlag flags) {
-//        list.add(new TranslatableComponent(MESSAGE_GENERATOR).withStyle(ChatFormatting.BLUE));
-//    }
-
 	@Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result)
 	{
@@ -113,7 +108,6 @@ public class TouchStoneBlock extends Block implements EntityBlock
 	    if(!level.isClientSide() && level instanceof ServerLevel s)
 	    ServerLifecycleHooks.getCurrentServer().getLevel(Level.OVERWORLD).getCapability(LevelSpawnsProvider.LEVEL_SPAWNS).ifPresent(spawns -> {
             spawns.destroySpawnForAll(new SpawnPoint(pos, s.dimension()));
-            System.out.println("done!");
         });
 	}
 	

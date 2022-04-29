@@ -28,8 +28,8 @@ public class BlocksRegistry
 	public static final RegistryObject<SlabBlock> TOUCHSTONE_BASE = BLOCKS.register("touchstone_base", () -> new SlabBlock(BlockBehaviour.Properties.of(Material.STONE)));
 	public static final RegistryObject<BlockEntityType<TouchStoneBE>> TOUCHSTONEBE = BLOCK_ENTITIES.register("touchstone_be", () -> BlockEntityType.Builder.of(TouchStoneBE::new, TOUCHSTONE.get()).build(null));
 	
-	public static final RegistryObject<Block> GRASSUSEFUL = BLOCKS.register("grassuseful", () -> new TallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().strength(0.2F, 0.0F)));
-	public static final RegistryObject<Block> TALLGRASSUSEFUL = BLOCKS.register("tallgrassuseful", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS).strength(0.2F, 0.0F)));
+	public static final RegistryObject<Block> GRASSUSEFUL = BLOCKS.register("grassuseful", () -> new TallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().noOcclusion().strength(0.2F, 0.0F)));
+	public static final RegistryObject<Block> TALLGRASSUSEFUL = BLOCKS.register("tallgrassuseful", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS).noOcclusion().strength(0.2F, 0.0F)));
 
 	public static final RegistryObject<Block> OAK_STUMP = BLOCKS.register("oak_stump", () -> new StumpBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.2F, 0.0F).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
     public static final RegistryObject<Block> BIRCH_STUMP = BLOCKS.register("birch_stump", () -> new StumpBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.2F, 0.0F).requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));

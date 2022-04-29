@@ -11,6 +11,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.BlockRenderDispatcher;
+import net.minecraft.client.renderer.block.model.ItemOverrides.BakedOverride;
 import net.minecraft.client.renderer.block.model.ItemTransforms.TransformType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -51,7 +52,7 @@ public class TouchStoneBER implements BlockEntityRenderer<TouchStoneBE>
 		}
 		stack.pushPose();
 		stack.translate(0.5D, 0.5D, 0.5D);
-		stack.scale(1.0F, 1.4F, 1.0F);
+		stack.scale(2.5F, 3F, 2.5F);
 		stack.mulPose(Vector3f.XP.rotationDegrees(90));
 		itemRenderer.renderStatic(player, rune, TransformType.GUI, false, stack, buffer, touchstone.getLevel(), combinedOverlay, packedLight, 0);
 		stack.popPose();

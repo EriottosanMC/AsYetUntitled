@@ -35,9 +35,10 @@ public class ItemsRegistry
 	public static final RegistryObject<Item> BACKPACK_FRONT_BUTTONS = ITEMS.register("backpack/front_buttons", () -> new Item(new Item.Properties()));
 	
 	public static final RegistryObject<Item> DUMMY_RUNE = ITEMS.register("dummy_rune", () -> new ItemRune(new Item.Properties().tab(ITEM_GROUP)));
-	public static final RegistryObject<Item> DUMMY_RUNE_BLANK = ITEMS.register("dummy_rune_blank", () -> new ItemRune(new Item.Properties().tab(ITEM_GROUP)));
 	
-	public static final RegistryObject<BlockItem> TOUCHSTONE_ITEM = ITEMS.register("touchstone", () -> new BlockItem(BlocksRegistry.TOUCHSTONE.get(), new Item.Properties().tab(ITEM_GROUP)));
+	public static final RegistryObject<BlockItem> TOUCHSTONE = ITEMS.register("touchstone", () -> new BlockItem(BlocksRegistry.TOUCHSTONE.get(), new Item.Properties().tab(ITEM_GROUP)));
+    public static final RegistryObject<BlockItem> TOUCHSTONE_BASE= ITEMS.register("touchstone_base", () -> new BlockItem(BlocksRegistry.TOUCHSTONE_BASE.get(), new Item.Properties().tab(ITEM_GROUP)));
+
 	public static final RegistryObject<BlockItem> GRASS = ITEMS.register("usefulgrass", () -> new BlockItem(BlocksRegistry.GRASSUSEFUL.get(), new Item.Properties().tab(ITEM_GROUP)));
 	public static final RegistryObject<BlockItem> TALLGRASS = ITEMS.register("usefultallgrass", () -> new BlockItem(BlocksRegistry.TALLGRASSUSEFUL.get(), new Item.Properties().tab(ITEM_GROUP)));
 

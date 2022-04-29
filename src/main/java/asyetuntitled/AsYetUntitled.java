@@ -1,12 +1,17 @@
 package asyetuntitled;
 
-import net.minecraftforge.api.distmarker.Dist;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
@@ -16,9 +21,13 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import asyetuntitled.client.event.ClientModEvents;
+import asyetuntitled.client.screen.ClientCustomBundleTooltip;
+import asyetuntitled.client.screen.LivingChestScreen;
+import asyetuntitled.client.util.ClientReflectionHelper;
+import asyetuntitled.client.util.ClientResourceLocations;
 import asyetuntitled.common.block.BlocksRegistry;
 import asyetuntitled.common.entity.EntityRegistry;
+import asyetuntitled.common.item.CustomBundleTooltip;
 import asyetuntitled.common.item.ItemsRegistry;
 import asyetuntitled.common.menu.MenusRegistry;
 import asyetuntitled.common.messages.MessagesRegistry;
@@ -47,7 +56,6 @@ public class AsYetUntitled
 		IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
 		// Register the setup methods for modloading
 		modBus.addListener(this::setupCommon);
-		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> modBus.addListener(ClientModEvents::init));
         // Register the enqueueIMC method for modloading. This allows us to send messages to other mods
         modBus.addListener(this::enqueueIMC);
         // Register the processIMC method for modloading. This allows us to receive messages from other mods
@@ -77,7 +85,7 @@ public class AsYetUntitled
         });
         
    }
-    
+
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
         // some example code to dispatch IMC to another mod

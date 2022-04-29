@@ -60,11 +60,11 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 @Mod.EventBusSubscriber(modid = AsYetUntitled.MODID, bus = Bus.MOD, value = Dist.CLIENT)
 public class ClientModEvents {
 
-    public static void init(final FMLClientSetupEvent event)
+    @SubscribeEvent
+    public static void setupEvent(final FMLClientSetupEvent event)
     {
         event.enqueueWork(() -> {
             ClientReflectionHelper.init();
-            
             ItemBlockRenderTypes.setRenderLayer(BlocksRegistry.GRASSUSEFUL.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(BlocksRegistry.TALLGRASSUSEFUL.get(), RenderType.cutoutMipped());
             MenuScreens.register(MenusRegistry.LIVING_CHEST_CONTAINER.get(), LivingChestScreen::new);           // Attach our container to the screen
@@ -72,9 +72,9 @@ public class ClientModEvents {
             ItemProperties.register(ItemsRegistry.DUMMY_RUNE.get(), ClientResourceLocations.ALPHABET, (stack, level, living, id) -> {
                 CompoundTag tag = stack.getOrCreateTag();
                 float f = 0.0F;
-                if(tag.contains("Alphabet"))
+                if(tag.contains("alphabet"))
                 {
-                    f = tag.getFloat("Alphabet");
+                    f = tag.getFloat("alphabet");
                 }
                 return f;
             });
