@@ -3,10 +3,10 @@ package asyetuntitled.common.event;
 import java.util.Collection;
 
 import asyetuntitled.AsYetUntitled;
-import asyetuntitled.common.block.ModTags;
 import asyetuntitled.common.entity.backpack.EntityBackpack;
 import asyetuntitled.common.item.ItemBackpack;
 import asyetuntitled.common.item.ItemsRegistry;
+import asyetuntitled.common.util.ModTags;
 import asyetuntitled.common.util.capability.LevelSpawnsProvider;
 import asyetuntitled.common.util.capability.PlayerSanityProvider;
 import net.minecraft.core.BlockPos;

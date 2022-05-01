@@ -72,7 +72,7 @@ public class TouchStoneBE extends BlockEntity
 // Called by the block ticker
     public void tickServer() 
     {
-//        if(!level.isClientSide && !this.getRune().getOrCreateTag().contains("Alphabet")) this.changeRune(this.level.random.nextFloat());
+        if(!level.isClientSide && !this.getRune().getOrCreateTag().contains("alphabet")) this.changeRune(this.level.random.nextFloat());
     }
 
     
@@ -193,5 +193,10 @@ public class TouchStoneBE extends BlockEntity
     public ItemStack getRune()
     {
     	return rune.get(0);
+    }
+
+    public void setRuneNull()
+    {
+       rune.set(0, new ItemStack(ItemsRegistry.DUMMY_RUNE.get()));        
     }
 }

@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.Level;
 
-public class RendererChanger 
+public class LightMapGenerator 
 {
 	//0-3 = noon-midnight, 4 = lightning
 	private static Vector3f[] skyColours = {new Vector3f(239, 234, 218), new Vector3f(219, 189, 134), new Vector3f(183, 78, 85), new Vector3f(0, 60, 160), new Vector3f(186, 253, 253), new Vector3f(237, 215, 156)};

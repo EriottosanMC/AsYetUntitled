@@ -17,7 +17,10 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 @Mod.EventBusSubscriber(modid = AsYetUntitled.MODID, bus = Bus.FORGE, value = Dist.CLIENT)
 public class ClientInputEventsHandler {
 	
-	
+    /*
+     * Handles input events
+     */
+    
 //	//Stops blank slots being selected by mouse press
 //	@SubscribeEvent
 //	public static void handleMousePress(ScreenEvent.MouseClickedEvent.Pre event)

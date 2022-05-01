@@ -1,6 +1,5 @@
-package asyetuntitled.common.block;
+package asyetuntitled.common.util;
 
-import asyetuntitled.common.util.CommonResourceLocations;
 import net.minecraft.core.Registry;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;

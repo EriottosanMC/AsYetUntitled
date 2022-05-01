@@ -16,7 +16,7 @@ import com.mojang.math.Vector3f;
 import asyetuntitled.AsYetUntitled;
 import asyetuntitled.client.sanity.ClientSanityData;
 import asyetuntitled.client.util.ClientReflectionHelper;
-import asyetuntitled.client.util.RendererChanger;
+import asyetuntitled.client.util.LightMapGenerator;
 import asyetuntitled.common.item.ItemBackpack;
 import asyetuntitled.common.messages.ClientThoughtsData;
 import asyetuntitled.client.util.ClientResourceLocations;
@@ -56,7 +56,7 @@ public class ClientRenderEventsHandler {
 			GameRenderer renderer = event.getRenderer();
 			LightTexture lt = renderer.lightTexture();
 			DynamicTexture dt = ClientReflectionHelper.getLightTexture(lt);
-			RendererChanger.update(lt, mc, dt);
+			LightMapGenerator.update(lt, mc, dt);
 		}
 	}
 	
