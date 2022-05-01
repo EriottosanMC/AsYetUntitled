@@ -4,7 +4,7 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
-import asyetuntitled.AsYetUntitled;
+import asyetuntitled.SanityConfig;
 import asyetuntitled.common.util.capability.PlayerSanityProvider;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -17,13 +17,13 @@ public class SanityCommands {
 	{
 		dispatcher.register(Commands.literal("sanity").requires((commandSource) -> {
 			return commandSource.hasPermission(2);
-		}).then(Commands.literal("set").then(Commands.argument("sanity", IntegerArgumentType.integer(0, AsYetUntitled.MAX_SANITY)).executes((command) -> {
+		}).then(Commands.literal("set").then(Commands.argument("sanity", IntegerArgumentType.integer(0, SanityConfig.MAX_SANITY.get())).executes((command) -> {
 			return setSanity(command.getSource(), IntegerArgumentType.getInteger(command, "sanity"), false);
-		}))).then(Commands.literal("change").then(Commands.argument("sanity", IntegerArgumentType.integer(-AsYetUntitled.MAX_SANITY, AsYetUntitled.MAX_SANITY)).executes((command) -> {
+		}))).then(Commands.literal("change").then(Commands.argument("sanity", IntegerArgumentType.integer(-SanityConfig.MAX_SANITY.get(), SanityConfig.MAX_SANITY.get())).executes((command) -> {
 			return changeSanity(command.getSource(), IntegerArgumentType.getInteger(command, "sanity"), false);
-		}))).then(Commands.literal("force").then(Commands.literal("set").then(Commands.argument("sanity", IntegerArgumentType.integer(0, AsYetUntitled.MAX_SANITY)).executes((command) -> {
+		}))).then(Commands.literal("force").then(Commands.literal("set").then(Commands.argument("sanity", IntegerArgumentType.integer(0, SanityConfig.MAX_SANITY.get())).executes((command) -> {
 			return setSanity(command.getSource(), IntegerArgumentType.getInteger(command, "sanity"), true);
-		}))).then(Commands.literal("change").then(Commands.argument("sanity", IntegerArgumentType.integer(-AsYetUntitled.MAX_SANITY, AsYetUntitled.MAX_SANITY)).executes((command) -> {
+		}))).then(Commands.literal("change").then(Commands.argument("sanity", IntegerArgumentType.integer(-SanityConfig.MAX_SANITY.get(), SanityConfig.MAX_SANITY.get())).executes((command) -> {
 			return changeSanity(command.getSource(), IntegerArgumentType.getInteger(command, "sanity"), true);
 		})))));
 	}

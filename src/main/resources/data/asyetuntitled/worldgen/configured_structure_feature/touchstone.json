@@ -1,0 +1,12 @@
+{
+  "type": "asyetuntitled:touchstone",
+  "config": {
+    "start_pool": "asyetuntitled:touchstone/start_pool",
+    "size": 1
+  },
+
+  "biomes": "#asyetuntitled:has_structure/touchstone",
+  "adapt_noise": true,
+  "spawn_overrides": {
+  }
+}

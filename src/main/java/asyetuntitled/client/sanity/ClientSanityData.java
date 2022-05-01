@@ -3,7 +3,7 @@ package asyetuntitled.client.sanity;
 import java.util.List;
 import java.util.Random;
 
-import asyetuntitled.AsYetUntitled;
+import asyetuntitled.SanityConfig;
 import asyetuntitled.client.util.ClientReflectionHelper;
 import asyetuntitled.client.util.ClientResourceLocations;
 import asyetuntitled.common.particle.ParticlesRegistry;
@@ -31,7 +31,7 @@ public class ClientSanityData
 	public static void setTarget(int sanity, boolean forceUpdate)
     {
     	if(sanity < 0) sanity = 0;
-    	else if (sanity > AsYetUntitled.MAX_SANITY) sanity = AsYetUntitled.MAX_SANITY;
+    	else if (sanity > SanityConfig.MAX_SANITY.get()) sanity = SanityConfig.MAX_SANITY.get();
     	ClientSanityData.targetSanity = sanity;
     	if(forceUpdate)
     	{
@@ -47,7 +47,7 @@ public class ClientSanityData
     
     public static float getPlayerSanity() 
     {
-        return playerSanity / (float) AsYetUntitled.MAX_SANITY;
+        return playerSanity / (float) SanityConfig.MAX_SANITY.get();
     }
     
     public static int getTargetSanity() 
@@ -63,8 +63,8 @@ public class ClientSanityData
     public static void tickSanity()
     {
 		if(requiresForcedUpdate ||
-			(isIncreasing() && Math.round((40 * playerSanity)/((float) AsYetUntitled.MAX_SANITY)) != Math.round((40 * ++playerSanity)/((float) AsYetUntitled.MAX_SANITY))) ||
-			(isDecreasing() && Math.round((40 * playerSanity)/((float) AsYetUntitled.MAX_SANITY)) != Math.round((40 * --playerSanity)/((float) AsYetUntitled.MAX_SANITY))))
+			(isIncreasing() && Math.round((40 * playerSanity)/((float) SanityConfig.MAX_SANITY.get())) != Math.round((40 * ++playerSanity)/((float) SanityConfig.MAX_SANITY.get()))) ||
+			(isDecreasing() && Math.round((40 * playerSanity)/((float) SanityConfig.MAX_SANITY.get())) != Math.round((40 * --playerSanity)/((float) SanityConfig.MAX_SANITY.get()))))
     	{
     		requiresForcedUpdate = false;
 			updateSanityRenderEffects();

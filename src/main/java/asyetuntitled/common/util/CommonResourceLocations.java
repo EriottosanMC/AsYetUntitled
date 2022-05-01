@@ -16,6 +16,8 @@ public class CommonResourceLocations {
 	
 	//Tags
 	public static ResourceLocation DIGGABLE_BY_HAND = new ResourceLocation(AsYetUntitled.MODID, "diggable_by_hand");
+    public static ResourceLocation CAN_TOUCHSTONE_SPAWN = new ResourceLocation(AsYetUntitled.MODID, "touchstone");
+    public static ResourceLocation HAS_TOUCHSTONE = new ResourceLocation(AsYetUntitled.MODID, "has_structure/touchstone");
 
 	//Sounds (Sounds get passed from the server sometimes so need to be common)
     public static ResourceLocation CHARLIE_MOOD = new ResourceLocation(AsYetUntitled.MODID, "charlie_mood");
@@ -31,5 +33,6 @@ public class CommonResourceLocations {
     public static ResourceLocation SHADOW_CHICKEN_HURT = new ResourceLocation(AsYetUntitled.MODID, "shadow_chicken_hurt");
     public static ResourceLocation SHADOW_CHICKEN_DEATH = new ResourceLocation(AsYetUntitled.MODID, "shadow_chicken_death");
     public static ResourceLocation SHADOW_CHICKEN_STEP = new ResourceLocation(AsYetUntitled.MODID, "shadow_chicken_step");
+
 
 }

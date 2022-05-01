@@ -1,6 +1,6 @@
 package asyetuntitled.common.util.capability;
 
-import asyetuntitled.AsYetUntitled;
+import asyetuntitled.SanityConfig;
 import asyetuntitled.client.sanity.ClientSanityData;
 import asyetuntitled.common.messages.MessagesRegistry;
 import asyetuntitled.common.messages.ClientboundPacketSyncPlayerDarkness;
@@ -10,7 +10,7 @@ import net.minecraft.world.entity.player.Player;
 
 public class PlayerSanity
 {
-	private int playerSanity = AsYetUntitled.MAX_SANITY;
+	private int playerSanity = SanityConfig.MAX_SANITY.get();
 
 	public void changeSanity(Player player, int amount)
 	{
@@ -24,7 +24,7 @@ public class PlayerSanity
 	
 	public void setSanity(Player player, int sanity)
 	{
-		if(sanity > AsYetUntitled.MAX_SANITY) sanity = AsYetUntitled.MAX_SANITY;
+		if(sanity > SanityConfig.MAX_SANITY.get()) sanity = SanityConfig.MAX_SANITY.get();
 		else if(sanity < 0) sanity = 0;
 		
 		this.setSanity(player, sanity, false);
@@ -41,7 +41,7 @@ public class PlayerSanity
 	
 	public void resetSanity(Player player)
 	{
-		this.setSanity(player, AsYetUntitled.MAX_SANITY);
+		this.setSanity(player, SanityConfig.MAX_SANITY.get());
 	}
 	
 	public int getSanityRaw()
@@ -51,19 +51,19 @@ public class PlayerSanity
 	
 	public float getSanity()
 	{
-		return this.playerSanity / (float) AsYetUntitled.MAX_SANITY;
+		return this.playerSanity / (float) SanityConfig.MAX_SANITY.get();
 	}
 	
 	public void debugCycleSanity(Player player)
 	{
 	    int i = ClientSanityData.getPlayerSanityRaw();
-		if(i >= AsYetUntitled.MAX_SANITY)
+		if(i >= SanityConfig.MAX_SANITY.get())
 		{
 			this.setSanity(player, 0);
 		}
 		else if(i <= 0)
 		{
-			this.setSanity(player, AsYetUntitled.MAX_SANITY);
+			this.setSanity(player, SanityConfig.MAX_SANITY.get());
 		}
 	}
 	

@@ -59,7 +59,8 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.server.ServerLifecycleHooks;
 
 @Mod.EventBusSubscriber(modid = AsYetUntitled.MODID, bus = Bus.FORGE)
-public class EventsHandler {
+public class EventsHandler
+{
 
 	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
 	public static void onToolTip(ItemTooltipEvent event)
