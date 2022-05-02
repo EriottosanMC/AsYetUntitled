@@ -21,11 +21,9 @@ public class SanityCommands {
 			return setSanity(command.getSource(), IntegerArgumentType.getInteger(command, "sanity"), false);
 		}))).then(Commands.literal("change").then(Commands.argument("sanity", IntegerArgumentType.integer(-SanityConfig.MAX_SANITY.get(), SanityConfig.MAX_SANITY.get())).executes((command) -> {
 			return changeSanity(command.getSource(), IntegerArgumentType.getInteger(command, "sanity"), false);
-		}))).then(Commands.literal("force").then(Commands.literal("set").then(Commands.argument("sanity", IntegerArgumentType.integer(0, SanityConfig.MAX_SANITY.get())).executes((command) -> {
+		}))).then(Commands.literal("force").then(Commands.argument("sanity", IntegerArgumentType.integer(0, SanityConfig.MAX_SANITY.get())).executes((command) -> {
 			return setSanity(command.getSource(), IntegerArgumentType.getInteger(command, "sanity"), true);
-		}))).then(Commands.literal("change").then(Commands.argument("sanity", IntegerArgumentType.integer(-SanityConfig.MAX_SANITY.get(), SanityConfig.MAX_SANITY.get())).executes((command) -> {
-			return changeSanity(command.getSource(), IntegerArgumentType.getInteger(command, "sanity"), true);
-		})))));
+		}))));
 	}
 	
 	private static int setSanity(CommandSourceStack command, int set, boolean force) throws CommandSyntaxException

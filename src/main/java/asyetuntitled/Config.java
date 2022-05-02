@@ -18,7 +18,7 @@ public class Config
      * SERVER config exists on the server and is synced to players on connection.
      */
     
-    public static void register()
+    public static void registerConfigurations()
     {
         registerServerConfigs();
         registerCommonConfigs();

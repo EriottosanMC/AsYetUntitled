@@ -26,11 +26,9 @@ public class SpookyEyesParticle extends TextureSheetParticle
 		this.zd *= 0.02F;
 		
 		this.setColor(1.0F, 1.0F, 1.0F);
-		
 		this.lifetime = (int) (20F / level.random.nextFloat());
-		
-		
 	}
+	
 	@Override
 	protected int getLightColor(float p_107249_) 
 	{

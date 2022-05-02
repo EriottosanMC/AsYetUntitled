@@ -15,7 +15,7 @@ public class ParticlesRegistry
 	public static final RegistryObject<ParticleType<SimpleParticleType>> SPOOKY_EYES = PARTICLES.register("spookyeyes", () -> new SimpleParticleType(true));
 
 	
-	public static void register(IEventBus modBus) 
+	public static void registerParticles(IEventBus modBus) 
 	{
 		PARTICLES.register(modBus);
 	}

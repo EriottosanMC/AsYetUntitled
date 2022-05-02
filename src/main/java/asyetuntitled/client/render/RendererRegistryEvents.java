@@ -3,8 +3,8 @@ package asyetuntitled.client.render;
 import java.util.Set;
 
 import asyetuntitled.AsYetUntitled;
-import asyetuntitled.client.event.TouchStoneCornerBER;
 import asyetuntitled.client.render.blockentity.TouchStoneBER;
+import asyetuntitled.client.render.blockentity.TouchStoneCornerBER;
 import asyetuntitled.client.render.entity.BackpackRenderer;
 import asyetuntitled.client.render.entity.LivingChestRenderer;
 import asyetuntitled.client.render.entity.ShadowCreatureRenderer;

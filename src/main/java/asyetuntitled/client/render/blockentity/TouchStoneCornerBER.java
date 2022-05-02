@@ -1,35 +1,37 @@
-package asyetuntitled.client.event;
+package asyetuntitled.client.render.blockentity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Vector3f;
 
+import asyetuntitled.AsYetUntitled;
 import asyetuntitled.common.block.CornerBlock;
 import asyetuntitled.common.block.TouchStoneCornerBE;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.inventory.InventoryMenu;
 
 public class TouchStoneCornerBER implements BlockEntityRenderer<TouchStoneCornerBE>
 {
-    private final BlockEntityRendererProvider.Context context;
     
     public TouchStoneCornerBER(BlockEntityRendererProvider.Context context)
     {
-        this.context = context;
     }
 
     @Override
     public void render(TouchStoneCornerBE corner, float partialTicks, PoseStack stack, MultiBufferSource buffer,
             int combinedOverlay, int packedLight) 
     {
-        BlockRenderDispatcher dispatcher = this.context.getBlockRenderDispatcher();
-        TextureAtlasSprite sprite = dispatcher.getBlockModel(corner.getBlockState()).getParticleIcon(corner.getModelData());
+        Minecraft mc = Minecraft.getInstance();
+        TextureAtlasSprite topTex = mc.getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(new ResourceLocation(AsYetUntitled.MODID, "block/touchstone"));
+        TextureAtlasSprite sideTex = mc.getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(new ResourceLocation(AsYetUntitled.MODID, "block/touchstone_side"));
         VertexConsumer builder = buffer.getBuffer(RenderType.solid());
         
         stack.pushPose();
@@ -50,26 +52,25 @@ public class TouchStoneCornerBER implements BlockEntityRenderer<TouchStoneCorner
             stack.translate(-1, 0, 0);
         }
         
-        add(builder, stack, 0, 0, 0, sprite.getU0(), sprite.getV0());
-        add(builder, stack, 0, 0, 0, sprite.getU0(), sprite.getV0());
-        add(builder, stack, 1, 0, 1, sprite.getU1(), sprite.getV1());
-        add(builder, stack, 0, 0, 1, sprite.getU0(), sprite.getV1());
+        add(builder, stack, 0, 0, 0, topTex.getU0(), topTex.getV0(), packedLight);
+        add(builder, stack, 0, 0, 0, topTex.getU0(), topTex.getV0(), packedLight);
+        add(builder, stack, 1, 0, 1, topTex.getU1(), topTex.getV1(), packedLight);
+        add(builder, stack, 0, 0, 1, topTex.getU0(), topTex.getV1(), packedLight);
         
-        add(builder, stack, 0, 0.5F, 1, sprite.getU0(), sprite.getV1());
-        add(builder, stack, 1, 0.5F, 1, sprite.getU1(), sprite.getV1());
-        add(builder, stack, 0, 0.5F, 0, sprite.getU0(), sprite.getV0());
-        add(builder, stack, 0, 0.5F, 0, sprite.getU0(), sprite.getV0());
+        add(builder, stack, 0, 0.5F, 1, topTex.getU0(), topTex.getV1(), packedLight);
+        add(builder, stack, 1, 0.5F, 1, topTex.getU1(), topTex.getV1(), packedLight);
+        add(builder, stack, 0, 0.5F, 0, topTex.getU0(), topTex.getV0(), packedLight);
+        add(builder, stack, 0, 0.5F, 0, topTex.getU0(), topTex.getV0(), packedLight);
         
+        add(builder, stack, 0, 0, 1, sideTex.getU0(), sideTex.getV0(), packedLight);
+        add(builder, stack, 1, 0, 1, sideTex.getU1(), sideTex.getV0(), packedLight);
+        add(builder, stack, 1, 0.5F, 1, sideTex.getU1(), sideTex.getV1(), packedLight);
+        add(builder, stack, 0, 0.5F, 1, sideTex.getU0(), sideTex.getV1(), packedLight);
         
-        add(builder, stack, 0, 0, 1, sprite.getU0(), sprite.getV0());
-        add(builder, stack, 1, 0, 1, sprite.getU1(), sprite.getV0());
-        add(builder, stack, 1, 0.5F, 1, sprite.getU1(), sprite.getV1());
-        add(builder, stack, 0, 0.5F, 1, sprite.getU0(), sprite.getV1());
-        
-        add(builder, stack, 0, 0, 0, sprite.getU0(), sprite.getV0());
-        add(builder, stack, 0, 0, 1, sprite.getU1(), sprite.getV0());
-        add(builder, stack, 0, 0.5F, 1, sprite.getU1(), sprite.getV1());
-        add(builder, stack, 0, 0.5F, 0, sprite.getU0(), sprite.getV1());
+        add(builder, stack, 0, 0, 0, sideTex.getU0(), sideTex.getV0(), packedLight);
+        add(builder, stack, 0, 0, 1, sideTex.getU1(), sideTex.getV0(), packedLight);
+        add(builder, stack, 0, 0.5F, 1, sideTex.getU1(), sideTex.getV1(), packedLight);
+        add(builder, stack, 0, 0.5F, 0, sideTex.getU0(), sideTex.getV1(), packedLight);
       
         stack.popPose();
         stack.pushPose();
@@ -90,20 +91,20 @@ public class TouchStoneCornerBER implements BlockEntityRenderer<TouchStoneCorner
         }
         stack.mulPose(Vector3f.YN.rotationDegrees(45));
         stack.scale((float) Math.sqrt(2.0D), 1F, 1F);
-        add(builder, stack, 0 , 0.5F , 0, sprite.getU0(), sprite.getV1());
-        add(builder, stack, 1 , 0.5F , 0, sprite.getU1(), sprite.getV1());
-        add(builder, stack, 1, 0, 0, sprite.getU1(), sprite.getV0());
-        add(builder, stack, 0, 0, 0, sprite.getU0(), sprite.getV0());
+        add(builder, stack, 0 , 0.5F , 0, sideTex.getU0(), sideTex.getV(8), packedLight);
+        add(builder, stack, 1 , 0.5F , 0, sideTex.getU1(), sideTex.getV(8), packedLight);
+        add(builder, stack, 1, 0, 0, sideTex.getU1(), sideTex.getV1(), packedLight);
+        add(builder, stack, 0, 0, 0, sideTex.getU0(), sideTex.getV1(), packedLight);
 
         stack.popPose();
     }
 
-    private void add(VertexConsumer renderer, PoseStack stack, float x, float y, float z, float u, float v) {
+    private void add(VertexConsumer renderer, PoseStack stack, float x, float y, float z, float u, float v, int packedLight) {
         renderer.vertex(stack.last().pose(), x, y, z)
                 .color(1.0f, 1.0f, 1.0f, 1.0f)
                 .uv(u, v)
                 .overlayCoords(OverlayTexture.NO_OVERLAY)
-                .uv2(15728880)
+                .uv2(15728640)
                 .normal(1, 0, 0)
                 .endVertex();
     }

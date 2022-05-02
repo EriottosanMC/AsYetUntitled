@@ -19,6 +19,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.DismountHelper;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.CollisionGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -33,13 +34,16 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.server.ServerLifecycleHooks;
 
 public class TouchStoneBlock extends Block implements EntityBlock 
 {
     private static final ImmutableList<Vec3i> RESPAWN_HORIZONTAL_OFFSETS = ImmutableList.of(new Vec3i(-1, 0, -2), new Vec3i(0, 0, -2), new Vec3i(1, 0, -2), new Vec3i(-2, 0, -1), new Vec3i(-2, 0, 0), new Vec3i(-2, 0, 1), new Vec3i(-1, 0, 2), new Vec3i(0, 0, 2), new Vec3i(1, 0, 2), new Vec3i(2, 0, -1), new Vec3i(2, 0, 0), new Vec3i(2, 0, 1));
     private static final ImmutableList<Vec3i> RESPAWN_OFFSETS = (new Builder<Vec3i>()).addAll(RESPAWN_HORIZONTAL_OFFSETS).addAll(RESPAWN_HORIZONTAL_OFFSETS.stream().map(Vec3i::below).iterator()).addAll(RESPAWN_HORIZONTAL_OFFSETS.stream().map(Vec3i::above).iterator()).add(new Vec3i(0, 1, 0)).build();
-
+    private final VoxelShape shape;
+    
     public TouchStoneBlock() {
         super(Properties.of(Material.METAL)
                 .sound(SoundType.METAL)
@@ -47,12 +51,24 @@ public class TouchStoneBlock extends Block implements EntityBlock
                 .noOcclusion()
                 .requiresCorrectToolForDrops()
             );
+        this.shape = makeShape();
     }
     
-	@Override
+	private VoxelShape makeShape()
+    {
+        return Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D);
+    }
+
+    @Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) 
 	{
 		return new TouchStoneBE(pos, state);
+	}
+	
+	@Override
+	public VoxelShape getShape(BlockState p_60555_, BlockGetter p_60556_, BlockPos p_60557_, CollisionContext p_60558_)
+	{
+	    return this.shape;
 	}
 	
 	@Nullable

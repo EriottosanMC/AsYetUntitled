@@ -3,10 +3,12 @@ package asyetuntitled.client.event;
 import asyetuntitled.AsYetUntitled;
 import asyetuntitled.client.particle.SpookyEyesParticle;
 import asyetuntitled.client.render.RendererRegistryEvents;
+import asyetuntitled.client.render.item.ItemRenderer;
 import asyetuntitled.client.sanity.ClientSanityData;
 import asyetuntitled.client.util.ClientReflectionHelper;
 import asyetuntitled.client.util.ClientResourceLocations;
 import asyetuntitled.common.block.BlocksRegistry;
+import asyetuntitled.common.menu.MenusRegistry;
 import asyetuntitled.common.particle.ParticlesRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BiomeColors;
@@ -34,9 +36,8 @@ public class ClientModEvents
             
             ClientReflectionHelper.init();
             RendererRegistryEvents.registerItemBlockRenderers();
-            AsYetUntitledScreens.register();
-            ItemPropertyRegistry.register();
-            TooltipRegistry.register();
+            MenusRegistry.registerScreens();
+            ItemRenderer.registerAll();
         });
     }
     

@@ -18,6 +18,12 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class BlocksRegistry 
 {
+    /*
+     *  Registering blocks!
+     *  Remember to give each block a speed.
+     *  Remember to add blocks to the correct mining tag (including diggable by hand!)
+     */
+    
 	private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, AsYetUntitled.MODID);
 	private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, AsYetUntitled.MODID);
 	 private static final DeferredRegister<MenuType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, AsYetUntitled.MODID);

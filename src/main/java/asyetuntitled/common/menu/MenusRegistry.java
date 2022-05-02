@@ -1,8 +1,10 @@
 package asyetuntitled.common.menu;
 
 import asyetuntitled.AsYetUntitled;
+import asyetuntitled.client.screen.LivingChestScreen;
 import asyetuntitled.common.container.LivingChestContainer;
 import asyetuntitled.common.entity.livingchest.LivingChest;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
@@ -28,8 +30,13 @@ public class MenusRegistry {
 				}
 			}));
 	
-	public static void register(IEventBus bus) 
+	public static void registerContainers(IEventBus bus) 
 	{
 		CONTAINERS.register(bus);
+	}
+	
+	public static void registerScreens()
+	{
+	    MenuScreens.register(MenusRegistry.LIVING_CHEST_CONTAINER.get(), LivingChestScreen::new);          
 	}
 }

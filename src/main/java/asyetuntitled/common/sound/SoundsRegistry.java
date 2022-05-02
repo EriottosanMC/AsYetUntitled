@@ -29,7 +29,7 @@ public class SoundsRegistry {
     public static final RegistryObject<SoundEvent> SHADOW_CHICKEN_STEP = SOUNDS.register("shadow_chicken_step", () -> new SoundEvent(CommonResourceLocations.SHADOW_CHICKEN_STEP));
 
 	
-	public static void register(IEventBus bus) 
+	public static void registerSounds(IEventBus bus) 
 	{
 		SOUNDS.register(bus);
 	}

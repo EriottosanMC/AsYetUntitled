@@ -36,11 +36,11 @@ public class AsYetUntitled
         BlocksRegistry.registerBlocks(modBus);
         ItemsRegistry.registerItems(modBus);
         EntityRegistry.registerEntities(modBus);
-        MenusRegistry.register(modBus);
-        SoundsRegistry.register(modBus);    
-        ParticlesRegistry.register(modBus);    
+        MenusRegistry.registerContainers(modBus);
+        SoundsRegistry.registerSounds(modBus);    
+        ParticlesRegistry.registerParticles(modBus);    
         StructuresRegistry.registerStructures(modBus);
-        Config.register();
+        Config.registerConfigurations();
     }
     
     public static void logMessage(String s) 
@@ -48,7 +48,6 @@ public class AsYetUntitled
     	StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
     	String message = "";
     	message = message + stackTraceElements[2].toString() + "; ";
-    	
     	message = message + s;
     	LOGGER.info(message);
     }
