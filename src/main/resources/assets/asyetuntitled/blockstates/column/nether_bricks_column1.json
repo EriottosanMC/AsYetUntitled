@@ -1,0 +1,56 @@
+{
+	"multipart": [
+		{
+			"when": {
+				"up": "true"
+			},
+			"apply": {
+				"model": "asyetuntitled:block/column/nether_bricks_column_crown1"
+			}
+		},
+		{
+			"when": {
+				"down": "true"
+			},
+			"apply": {
+				"model": "asyetuntitled:block/column/nether_bricks_column_base1"
+			}
+		},
+		{
+			"when": {
+				"up": "true",
+				"down": "true"
+			},
+			"apply": {
+				"model": "asyetuntitled:block/column/nether_bricks_column_centre_short_short1"
+			}
+		},
+		{
+			"when": {
+				"up": "true",
+				"down": "false"
+			},
+			"apply": {
+				"model": "asyetuntitled:block/column/nether_bricks_column_centre_short_tall1"
+			}
+		},
+		{
+			"when": {
+				"up": "false",
+				"down": "true"
+			},
+			"apply": {
+				"model": "asyetuntitled:block/column/nether_bricks_column_centre_tall_short1"
+			}
+		},
+		{
+			"when": {
+				"up": "false",
+				"down": "false"
+			},
+			"apply": {
+				"model": "asyetuntitled:block/column/nether_bricks_column_centre_tall_tall1"
+			}
+		}
+	]
+}

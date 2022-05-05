@@ -1,0 +1,8 @@
+
+{
+	"parent": "asyetuntitled:block/template/column_crown2",
+	"textures": {
+		"top": "minecraft:block/quartz_block_bottom",
+		"side": "minecraft:block/quartz_block_bottom"
+	}
+}

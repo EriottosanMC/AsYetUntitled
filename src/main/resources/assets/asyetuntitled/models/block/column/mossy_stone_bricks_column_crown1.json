@@ -1,0 +1,7 @@
+{
+	"parent": "asyetuntitled:block/template/column_crown1",
+	"textures": {
+		"top": "minecraft:block/mossy_stone_bricks",
+		"side": "minecraft:block/mossy_stone_bricks"
+	}
+}

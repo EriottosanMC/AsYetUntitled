@@ -1,0 +1,7 @@
+{
+	"parent": "asyetuntitled:block/template/column_base0",
+	"textures": {
+		"top": "minecraft:block/netherite_block",
+		"side": "minecraft:block/netherite_block"
+	}
+}

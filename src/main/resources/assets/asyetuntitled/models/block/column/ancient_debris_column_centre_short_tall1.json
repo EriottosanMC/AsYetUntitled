@@ -1,0 +1,7 @@
+{
+	"parent": "asyetuntitled:block/template/column_centre_short_tall1",
+	"textures": {
+		"top": "minecraft:block/ancient_debris_top",
+		"side": "minecraft:block/ancient_debris_side"
+	}
+}

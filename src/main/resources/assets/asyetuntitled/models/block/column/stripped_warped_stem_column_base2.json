@@ -1,0 +1,7 @@
+{
+	"parent": "asyetuntitled:block/template/column_base2",
+	"textures": {
+		"top": "minecraft:block/stripped_warped_stem_top",
+		"side": "minecraft:block/stripped_warped_stem"
+	}
+}

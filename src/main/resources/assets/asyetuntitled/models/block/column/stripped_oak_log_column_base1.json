@@ -1,0 +1,7 @@
+{
+	"parent": "asyetuntitled:block/template/column_base1",
+	"textures": {
+		"top": "minecraft:block/stripped_oak_log",
+		"side": "minecraft:block/stripped_oak_log"
+	}
+}

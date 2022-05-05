@@ -284,9 +284,7 @@ public class EventsHandler
 				
 		        if(player instanceof ServerPlayer sPlayer)
 		        {
-		            System.out.println("1");
 		            ServerLifecycleHooks.getCurrentServer().getLevel(Level.OVERWORLD).getCapability(LevelSpawnsProvider.LEVEL_SPAWNS).ifPresent(spawns -> {
-		                System.out.println("2");
 		                spawns.respawn(sPlayer);
 		            });
 		        }

@@ -1,0 +1,7 @@
+{
+	"parent": "asyetuntitled:block/template/column_crown2",
+	"textures": {
+		"top": "minecraft:block/prismarine_bricks",
+		"side": "minecraft:block/prismarine_bricks"
+	}
+}

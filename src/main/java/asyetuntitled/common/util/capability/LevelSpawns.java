@@ -39,22 +39,36 @@ public class LevelSpawns
         MessagesRegistry.sendToPlayer(new ClientboundPacketSpawnpoint(point, true), player);
     }
     
+    public List<SpawnPoint> getPlayerSpawns(ServerPlayer player)
+    {
+        UUID uuid = player.getUUID();
+        List<SpawnPoint> points = playerSpawnPointList.getOrDefault(uuid, new ArrayList<>());
+        return points;
+    }
+    
+    public boolean isPlayerSpawn(ServerPlayer player, SpawnPoint point)
+    {
+        List<SpawnPoint> points = playerSpawnPointList.getOrDefault(player.getUUID(), new ArrayList<>());
+        for(SpawnPoint point2 : points)
+        {
+            if(point.isSamePoint(point2)) return true;
+        }
+        return false;
+    }
+    
     public boolean consumeSpawn(ServerPlayer player, SpawnPoint point)
     {
         UUID uuid = player.getUUID();
-        if(playerSpawnPointList.containsKey(uuid))
+        List<SpawnPoint> points = playerSpawnPointList.getOrDefault(uuid, new ArrayList<>());
+        for(SpawnPoint point2 : points)
         {
-            List<SpawnPoint> points = playerSpawnPointList.get(uuid);
-            for(SpawnPoint point2 : points)
+            if(point2.isSamePoint(point))
             {
-                if(point2.isSamePoint(point))
-                {
-                    MessagesRegistry.sendToPlayer(new ClientboundPacketSpawnpoint(point, false), player);
-                }
+                MessagesRegistry.sendToPlayer(new ClientboundPacketSpawnpoint(point, false), player);
             }
-            points.removeIf(point2 -> point2.isSamePoint(point));
-            playerSpawnPointList.put(uuid, points);
         }
+        points.removeIf(point2 -> point2.isSamePoint(point));
+        playerSpawnPointList.put(uuid, points);
         return false;
     }
     
@@ -80,12 +94,10 @@ public class LevelSpawns
     {
         MinecraftServer server = serverPlayer.server;
         SpawnPoint spawn = getFixedSpawn(serverPlayer);
-        System.out.println("3: " + (spawn == null ? "null" : spawn.getBlockPos()));
         while(spawn == null)
         {
             spawn = getRandomSpawn(server.getLevel(Level.OVERWORLD), serverPlayer);
         }
-        System.out.println("5: " + (spawn == null ? "null" : spawn.getBlockPos()));
         serverPlayer.setRespawnPosition(spawn.getDimension(), spawn.getBlockPos(), serverPlayer.yBodyRot, true, false);        
     }
     
@@ -113,7 +125,6 @@ public class LevelSpawns
     
     private SpawnPoint getRandomSpawn(ServerLevel level, ServerPlayer serverPlayer)
     {
-        System.out.println("4");
         ChunkGenerator chunkgenerator = level.getChunkSource().getGenerator();
         ChunkPos chunkpos = new ChunkPos(level.random.nextInt(this.respawnRadius) - ((this.respawnRadius-1)/2), level.random.nextInt(this.respawnRadius) - ((this.respawnRadius-1)/2));
         int i = chunkgenerator.getSpawnHeight(level);

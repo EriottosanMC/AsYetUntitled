@@ -1,0 +1,7 @@
+{
+	"parent": "asyetuntitled:block/template/column_base2",
+	"textures": {
+		"top": "minecraft:block/chiseled_nether_bricks",
+		"side": "minecraft:block/chiseled_nether_bricks"
+	}
+}

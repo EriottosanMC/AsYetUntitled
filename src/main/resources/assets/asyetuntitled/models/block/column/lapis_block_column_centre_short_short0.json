@@ -1,0 +1,7 @@
+{
+	"parent": "asyetuntitled:block/template/column_centre_short_short0",
+	"textures": {
+		"top": "minecraft:block/lapis_block",
+		"side": "minecraft:block/lapis_block"
+	}
+}

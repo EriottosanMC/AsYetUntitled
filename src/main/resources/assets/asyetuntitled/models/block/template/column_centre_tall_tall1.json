@@ -1,19 +1,18 @@
 {
     "textures": {
-        "particle": "#wall"
+        "particle": "#side"
     },
     "elements": [
         {   "from": [ 3, 0, 3 ],
             "to": [ 13, 16, 13 ],
             "faces": {
-                "down":  { "texture": "#wall", "cullface": "down" },
-                "up":    { "texture": "#wall", "cullface": "up" },
-                "north": { "texture": "#wall" },
-                "south": { "texture": "#wall" },
-                "west":  { "texture": "#wall" },
-                "east":  { "texture": "#wall" }
-            },
-            "__comment": "Center post"
+                "down":  { "texture": "#top", "cullface": "down" },
+                "up":    { "texture": "#top", "cullface": "up" },
+                "north": { "texture": "#side" },
+                "south": { "texture": "#side" },
+                "west":  { "texture": "#side" },
+                "east":  { "texture": "#side" }
+            }
         }
     ]
 }

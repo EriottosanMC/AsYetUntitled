@@ -1,0 +1,7 @@
+{
+	"parent": "asyetuntitled:block/template/column_crown1",
+	"textures": {
+		"top": "minecraft:block/cracked_nether_bricks",
+		"side": "minecraft:block/cracked_nether_bricks"
+	}
+}

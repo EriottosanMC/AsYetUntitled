@@ -1,0 +1,7 @@
+{
+	"parent": "asyetuntitled:block/template/column_base1",
+	"textures": {
+		"top": "minecraft:block/weathered_copper",
+		"side": "minecraft:block/weathered_copper"
+	}
+}

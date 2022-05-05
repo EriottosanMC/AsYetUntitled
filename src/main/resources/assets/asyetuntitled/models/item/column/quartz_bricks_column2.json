@@ -1,0 +1,8 @@
+{
+	"parent": "asyetuntitled:item/column/column2",
+	"ambientocclusion": false,
+	"textures": {
+		"top": "minecraft:block/quartz_bricks",
+		"side": "minecraft:block/quartz_bricks"
+	}
+}

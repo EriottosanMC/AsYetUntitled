@@ -1,0 +1,7 @@
+{
+	"parent": "asyetuntitled:block/template/column_centre_tall_tall2",
+	"textures": {
+		"top": "minecraft:block/exposed_cut_copper",
+		"side": "minecraft:block/exposed_cut_copper"
+	}
+}

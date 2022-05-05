@@ -1,0 +1,7 @@
+{
+	"parent": "asyetuntitled:block/template/column_centre_short_tall0",
+	"textures": {
+		"top": "minecraft:block/polished_blackstone",
+		"side": "minecraft:block/polished_blackstone"
+	}
+}

@@ -1,0 +1,7 @@
+{
+	"parent": "asyetuntitled:block/template/column_base2",
+	"textures": {
+		"top": "minecraft:block/obsidian",
+		"side": "minecraft:block/obsidian"
+	}
+}

@@ -1,0 +1,7 @@
+{
+	"parent": "asyetuntitled:block/template/column_base0",
+	"textures": {
+		"top": "minecraft:block/purpur_pillar_top",
+		"side": "minecraft:block/purpur_pillar"
+	}
+}

@@ -1,0 +1,7 @@
+{
+	"parent": "asyetuntitled:block/template/column_crown1",
+	"textures": {
+		"top": "minecraft:block/oxidized_cut_copper",
+		"side": "minecraft:block/oxidized_cut_copper"
+	}
+}

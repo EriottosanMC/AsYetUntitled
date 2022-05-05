@@ -1,0 +1,7 @@
+{
+	"parent": "asyetuntitled:block/template/column_base1",
+	"textures": {
+		"top": "minecraft:block/quartz_bricks",
+		"side": "minecraft:block/quartz_bricks"
+	}
+}

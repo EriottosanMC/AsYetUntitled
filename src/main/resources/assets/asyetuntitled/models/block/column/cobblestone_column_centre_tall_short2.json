@@ -1,0 +1,7 @@
+{
+	"parent": "asyetuntitled:block/template/column_centre_tall_short2",
+	"textures": {
+		"top": "minecraft:block/cobblestone",
+		"side": "minecraft:block/cobblestone"
+	}
+}
